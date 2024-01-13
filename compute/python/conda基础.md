@@ -2,7 +2,7 @@
 
 # conda
 
-
+[TOC]
 
 
 
@@ -40,7 +40,7 @@ trusted-host = https://pypi.tuna.tsinghua.edu.cn
 
 
 
-jupyter
+### jupyter使用
 
 ```shell
 #安装
@@ -100,3 +100,28 @@ proxy_servers:
 ```
 
  
+
+迁移
+
+```shell
+#PC1 产生一个my_env.tar.gz压缩文件
+pip install conda-pack
+conda pack -n my_env
+#PC2  进入conda 的 env文件夹
+tar -xzf my_env.tar.gz -C my_env
+source activate my_env
+#该方法由于后期conda将python的执行路径写如二进制exe文件而失效
+#conda这种写入exe简直是昏招 极大影响了conda用户的使用
+```
+
+方法2 需要联网
+
+```shell
+#PC1进入环境 备份当前环境依赖列表
+conda env export > environment.yml
+#PC2 在文件夹内释放
+conda env create -f environment.yml
+```
+
+
+

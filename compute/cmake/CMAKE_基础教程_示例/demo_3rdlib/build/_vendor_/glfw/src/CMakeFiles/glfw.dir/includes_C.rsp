@@ -1,0 +1,1 @@
+-I"R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/include" -I"R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src" -I"R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src" -I"R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/deps/mingw"

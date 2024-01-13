@@ -1,0 +1,10 @@
+^R:\NOTE\LINUX-NOTEBOOK\CMAKE_专项笔记\CMAKE_基础教程_示例\DEMO_3RDLIB\BUILD\CMAKEFILES\B5A81F3C6D9741CCC4B62AD5F5B7C523\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SR:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib -BR:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/engine.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

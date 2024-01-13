@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\x64\Debug\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\engine\Debug\engine.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\x64\Debug\ALL_BUILD</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

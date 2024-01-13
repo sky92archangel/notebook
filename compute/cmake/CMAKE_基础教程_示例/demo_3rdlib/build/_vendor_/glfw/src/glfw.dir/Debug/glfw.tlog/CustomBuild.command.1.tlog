@@ -1,0 +1,10 @@
+^R:\NOTE\LINUX-NOTEBOOK\CMAKE_专项笔记\CMAKE_基础教程_示例\DEMO_3RDLIB\_VENDOR_\GLFW\SRC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SR:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib -BR:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build --check-stamp-file R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

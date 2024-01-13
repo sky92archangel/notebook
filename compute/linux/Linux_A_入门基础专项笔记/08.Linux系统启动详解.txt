@@ -1,0 +1,168 @@
+	LINUX系统启动详解
+
+	系统启动流程
+		
+		BIOS
+
+		MBR:Boot Code
+
+		执行引导程序 - GRUB
+
+		加载内核
+	
+		执行init进程ID为1
+
+		runlevel		
+
+
+	BIOS
+
+		基本输入输出系统  硬件程序
+
+		计算机第一程序  检查启动设备
+
+		可启动设备在BIOS设置中进行定义 如USB  CDROM  HD
+
+	MBR
+
+		BIOS找到可启动设备后执行的引导代码
+
+		引导代码为MBR的前446字节
+
+	GRUB
+	
+		Grub是现在linux主流引导
+
+		可以引导几乎现在所有操作系统
+
+		Grub的相关文件在/boot/grub目录中
+
+		Grub配置文件为/boot/grub/grub.conf
+
+		配置格式
+
+			title CentOS
+				root(hd0,1)
+				kernel /boot/vmlinuz-2.6.32-279.el6.i686 ro root =UUID=77272833-B6BB-4D53-B043-9541D1102EBD
+				initrd /boot/initramfs-2.6.32-279.el6.i686.img
+	
+	kernel
+		
+		MBR的引导代码将负责找到并且加载linux的内核
+
+		linux内核保存在 /boot/vmlinuz-2.6.32-279.el6.i686
+
+		一般还会加载内核模块打包文件： /boot/initramfs-2.6.32-279.el6.i686.img
+
+		linux为何保持kernel的精简将一些不常用的驱动，功能编译为模块，在需要的时候动态加载。而这些模块被打包保存为一个initramfs
+
+		早期版本的linux使用initrd文件，initramfs是initrd的替代优化版本，比initrd更加节省空间，更加灵活
+
+		命令dmesg可以查看本次启动是内核的输出信息
+
+	INIT
+
+		系统第一进程
+
+		调用/etc/rc.d/rc.sysinit负责对系统进行初始化，挂载文件系统，并且根据运行级别启动相应服务
+
+		linux运行级别
+
+			-0 	关机
+		
+			-1 	单用户模式
+
+			-2 	不带网络的多用户模式
+
+			-3 	多用户模式
+
+			-4 	未使用
+
+			-5 	X11图形化模式
+
+			-6 	重新启动
+
+		可以通过/etc/inittab配置文件修改默认的运行级别
+
+		每个级别对应的启动服务保存在/etc/rc.d/rc[0123456].d
+
+		命令runlevel可显示当前以及上一个运行级别
+
+		命令init可以改变当前的运行界别	init 3  
+
+	单用户修改ROOT密码
+
+		为内核传递参数 1 或者 single   让系统进入单用户模式
+		
+		单用户模式下不启动任何服务
+
+		单用户模式直接以root用户登录，且需要密码
+
+		可以使用passwd修改root密码
+
+	GRUB加密
+
+		通过在grub.conf中的启动配置中加入如下参数可对grub加密
+
+		password --md5 
+
+		加密后的密码可以通过grub-md5-crypt生成
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

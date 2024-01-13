@@ -1,0 +1,612 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "_vendor_",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"jsonFile" : "directory-_vendor_-Debug-430ed520740e8a1ad6b7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_vendor_"
+				},
+				{
+					"build" : "_vendor_/tomlplusplus",
+					"jsonFile" : "directory-_vendor_.tomlplusplus-Debug-bfe7b7001f35fc8acaf0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/tomlplusplus"
+				},
+				{
+					"build" : "_vendor_/eigen",
+					"jsonFile" : "directory-_vendor_.eigen-Debug-841836e609755cd8821d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/eigen"
+				},
+				{
+					"build" : "_vendor_/spdlog",
+					"jsonFile" : "directory-_vendor_.spdlog-Debug-eabdbc75903d288c2a88.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/spdlog"
+				},
+				{
+					"build" : "_vendor_/opencv",
+					"jsonFile" : "directory-_vendor_.opencv-Debug-2842d75cc6b3214cc30a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/opencv"
+				},
+				{
+					"build" : "_engine_",
+					"jsonFile" : "directory-_engine_-Debug-e67742871e166eb13535.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_engine_",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "_engine_",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Debug-3cc777bbd1cfa5de80e5.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Debug-46118bfd70b92a2ea249.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "_engine_::@7f413d15a5febfef3c18",
+					"jsonFile" : "target-_engine_-Debug-4c0257d6e30786907fca.json",
+					"name" : "_engine_",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6
+					],
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "_vendor_",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"jsonFile" : "directory-_vendor_-Release-430ed520740e8a1ad6b7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_vendor_"
+				},
+				{
+					"build" : "_vendor_/tomlplusplus",
+					"jsonFile" : "directory-_vendor_.tomlplusplus-Release-bfe7b7001f35fc8acaf0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/tomlplusplus"
+				},
+				{
+					"build" : "_vendor_/eigen",
+					"jsonFile" : "directory-_vendor_.eigen-Release-841836e609755cd8821d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/eigen"
+				},
+				{
+					"build" : "_vendor_/spdlog",
+					"jsonFile" : "directory-_vendor_.spdlog-Release-eabdbc75903d288c2a88.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/spdlog"
+				},
+				{
+					"build" : "_vendor_/opencv",
+					"jsonFile" : "directory-_vendor_.opencv-Release-2842d75cc6b3214cc30a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/opencv"
+				},
+				{
+					"build" : "_engine_",
+					"jsonFile" : "directory-_engine_-Release-e67742871e166eb13535.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_engine_",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "_engine_",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Release-3cc777bbd1cfa5de80e5.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Release-46118bfd70b92a2ea249.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "_engine_::@7f413d15a5febfef3c18",
+					"jsonFile" : "target-_engine_-Release-9572360275f95041b922.json",
+					"name" : "_engine_",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6
+					],
+					"jsonFile" : "directory-.-MinSizeRel-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "_vendor_",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"jsonFile" : "directory-_vendor_-MinSizeRel-430ed520740e8a1ad6b7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_vendor_"
+				},
+				{
+					"build" : "_vendor_/tomlplusplus",
+					"jsonFile" : "directory-_vendor_.tomlplusplus-MinSizeRel-bfe7b7001f35fc8acaf0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/tomlplusplus"
+				},
+				{
+					"build" : "_vendor_/eigen",
+					"jsonFile" : "directory-_vendor_.eigen-MinSizeRel-841836e609755cd8821d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/eigen"
+				},
+				{
+					"build" : "_vendor_/spdlog",
+					"jsonFile" : "directory-_vendor_.spdlog-MinSizeRel-eabdbc75903d288c2a88.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/spdlog"
+				},
+				{
+					"build" : "_vendor_/opencv",
+					"jsonFile" : "directory-_vendor_.opencv-MinSizeRel-2842d75cc6b3214cc30a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/opencv"
+				},
+				{
+					"build" : "_engine_",
+					"jsonFile" : "directory-_engine_-MinSizeRel-e67742871e166eb13535.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_engine_",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "_engine_",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-3cc777bbd1cfa5de80e5.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-46118bfd70b92a2ea249.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "_engine_::@7f413d15a5febfef3c18",
+					"jsonFile" : "target-_engine_-MinSizeRel-60269e18bfa926f8ee6b.json",
+					"name" : "_engine_",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6
+					],
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "_vendor_",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"jsonFile" : "directory-_vendor_-RelWithDebInfo-430ed520740e8a1ad6b7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_vendor_"
+				},
+				{
+					"build" : "_vendor_/tomlplusplus",
+					"jsonFile" : "directory-_vendor_.tomlplusplus-RelWithDebInfo-bfe7b7001f35fc8acaf0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/tomlplusplus"
+				},
+				{
+					"build" : "_vendor_/eigen",
+					"jsonFile" : "directory-_vendor_.eigen-RelWithDebInfo-841836e609755cd8821d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/eigen"
+				},
+				{
+					"build" : "_vendor_/spdlog",
+					"jsonFile" : "directory-_vendor_.spdlog-RelWithDebInfo-eabdbc75903d288c2a88.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/spdlog"
+				},
+				{
+					"build" : "_vendor_/opencv",
+					"jsonFile" : "directory-_vendor_.opencv-RelWithDebInfo-2842d75cc6b3214cc30a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "_vendor_/opencv"
+				},
+				{
+					"build" : "_engine_",
+					"jsonFile" : "directory-_engine_-RelWithDebInfo-e67742871e166eb13535.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "_engine_",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "_engine_",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-3cc777bbd1cfa5de80e5.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-46118bfd70b92a2ea249.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "_engine_::@7f413d15a5febfef3c18",
+					"jsonFile" : "target-_engine_-RelWithDebInfo-b0e27a72c022563f0b2e.json",
+					"name" : "_engine_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/NOTE/linux-notebook/CMake_\u4e13\u9879\u7b14\u8bb0/CMAKE_\u57fa\u7840\u6559\u7a0b_\u793a\u4f8b/build",
+		"source" : "D:/NOTE/linux-notebook/CMake_\u4e13\u9879\u7b14\u8bb0/CMAKE_\u57fa\u7840\u6559\u7a0b_\u793a\u4f8b/demo_09"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

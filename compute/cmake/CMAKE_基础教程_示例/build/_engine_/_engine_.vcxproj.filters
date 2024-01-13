@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_09\_engine_\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_09\_engine_\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{F618B7A2-A59B-3A6D-B98E-3E9AB5273AB4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

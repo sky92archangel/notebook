@@ -1,0 +1,455 @@
+第一课  界面介绍 工作区画布调整
+
+	lightbox  
+		project tool  brush texture alpha
+
+	中心工作区
+	右面托盘  可将菜单栏移到其中  任何菜单栏左上角按钮可移动菜单
+
+	左方工具
+		笔刷 笔触 ALPHA 材质 贴图 颜色
+	右方条状  
+		
+		BPR  渲染		
+		渲染精度SPIX
+
+		画布调整  移动焦距适配大小
+
+	
+
+document文件菜单中   也有画布调整   
+		调整文件不可撤销   
+	上方document   -- half  -- double   也可手动调整画布大小  可打开约束比例
+	然后此时resize
+
+	background 背景颜色采集  下方range  调整画布的背景颜色变化率
+				center 变化中心大小
+
+	新建文件时自动适配窗口
+
+第二课  界面介绍 UI颜色 布局调整
+
+	右上可调整界面预制颜色
+
+	菜单中  preferences  -- icolor 可自定义界面颜色
+
+	右上可调整面板位置预设
+
+	将笔刷拉到托盘	CTRL+ALT选中笔刷拉到下方  如此可把笔刷放到下面
+
+	在笔刷菜单中找 AUTO MASKING  -- DARK FACE MASKING  CTRL+ALT可拉动到左方工具栏  或上方
+
+	同样  CTRL+ALT选不需要的按钮 拉到画布中 可除面板
+
+
+	面板配置完成后   preferences -- config  -- 自定义 关闭  然后STORE 就能保存当前界面设置
+	也可用SAVE UI 保存UI  为 cfg格式   换电脑使用
+
+（PS：只有打开自定义界面按钮才能开始移动界面）
+
+
+	上方 显示窗口不透明度  鼠标在画布区时有显示透明度
+
+	tab可切换到隐藏工具架
+
+
+
+第三课
+
+	文件菜单中  
+		SAVE AS START DOCUMENT  设定启动文件
+
+	只有最后创建的模型有效 其他可用CTRL+N清空
+
+	视图操作 	移动 	ALT+右键
+			旋转 	右键
+			缩放	CTRL+右键
+
+	perspective  正交透视切换  	
+
+	floor  栅格  XYZ 三个平面
+
+	旋转时按SHIFT  可捕捉正视图
+
+	LOCOL 切换  根据   当前雕刻部位为中心/物体中心   旋转
+
+	LOCOL对称   可根据物体中心对称雕刻
+	
+	frame  全局查看 最大化显示
+
+	poly frame  显示模型布线结构
+
+	Transp  除当前编辑物体  其他为半透明显示
+	ghost 	白色透明
+
+	solo  	只显示当前操作的模型
+
+	expos	分离 多模型 
+	
+
+
+第四课
+
+	从基本体创建模型  只有最后创建的模型有效  画布中拖拽创建
+	编辑模式 其他多余物体用CTRL+N清空
+
+	托板工具栏   INITIALIZE   初始化 轴向调整 顶部调整 段数  内半径等
+
+	托板工具栏   deformation  大小移动弯曲光滑 等基本调整
+		
+	托板工具栏   import   	可导入OBJ模型    再次导入将会替换当前模型
+
+	托板工具栏   subtool  	insert 插入一个模型  到当前画布 
+
+	托板工具栏   export 	只会到处当前画布内选中的模型
+
+	托板工具栏   save as 	保存为ZTools   	保存当前和subtool
+
+
+	文件菜单栏   save as  	保存项目ZPr	保存所有视图及模型
+
+	文件菜单栏   quicksave  lightbox中的快速保存   可找到自动保存
+
+	
+第五课
+
+	创建前  点make poly mash  然后拖动创建   
+	
+	standard 基础笔刷  雕刻  
+	clay		用于肌肉结构
+	move		初始模型调整
+	inflat	膨胀	沿着模型法线膨胀
+	smooth 	平滑
+	
+	按住CTRL+ALT点选笔刷   可设置笔刷快捷键
+
+	素材导入   
+		
+	texture  import  载入参考图
+
+	方法一：参照方式
+		
+		选择参照图 
+		image plane -- load image
+		
+		document -- new  document  适配场景  设定分辨率
+
+		然后导入图片   图片大小可在PS中调整 
+
+
+		image plane  -- 试图参数  opacity 可调整模型透明度
+			视图也可以设置快捷键
+			查看各种正视图 front back right  
+			store view 保存视图移动信息  锁定模型和图片的匹配
+
+	
+第六课		随堂实力联系骷髅A
+
+	几何-- dynamesh 自动 动态网格平均化 根据模型表面重新布线
+
+	按CTRL 拉动 操作  
+
+	
+第七课    	B
+	略
+
+第八课		C
+
+	CTRL+D 可增加细分级别   SHIFT+D 回到上级   D  前往下级
+
+	菜单 movie  turntable转盘  创建 转盘动画     export导出 spd
+
+
+第九课
+
+	编辑切换  T  快捷键
+
+	移动缩放旋转控制杆操作
+		WER  
+		中心外圈拖动控制杆位置   按SHIFT锁定拖动方向
+		两边完全 调整控制杆角度和长度  点击两边外圈 可确定控制杆中心
+		控制杆可切换坐标正交朝向
+
+		控制杆外白色圆圈  切换试视图至控制杆水平向 
+
+		内部圈可进行拖动   SHIFT可锁定移动方向 
+
+		轴心内部  拖动  起到裁切效果
+
+		边缘内部  拖动  起到拉伸变形效果
+
+		缩放 中心  控制杆方向不动
+		
+		
+
+	控制杆可测量模型大小  左上角   
+	preferences -- transpos units  刻度距离  调整为1 
+	可将当前控制杆单位重设为1    用于人体    几头身的测量
+	
+		
+第十一课   Z球的创建调整方法
+
+	    ALT选择  消除
+
+	鼠标在中间会捕捉
+
+		Z球移动时 按SHIFT可锁定方向
+
+	按A键可预览Z球产生的蒙皮网格  即右放托盘 adaptive  skin   可调整网格密度  初始模型尽量要少
+
+	make adaptive  skin 可生成网格
+
+	按住CTRL移动Z球时  下属Z球全都影响
+
+
+第十二课	Z球恐龙实例
+
+	略
+
+	
+
+第十三课	遮罩的使用方法A
+
+	
+	按住CTRL键 绘制遮罩  各种模式  球形曲线等  曲线遮罩 可按ALT调整弯曲 
+
+	 曲线遮罩
+				曲线绘制遮罩辅助 凡移动处皆遮罩
+				曲线删除 ： stroke -- curve function - delete
+		遮罩可防止细分  
+	
+	套索遮罩笔刷
+
+	范围性遮罩是穿透模型的
+	
+
+	在托盘的MASKING中  blurmask  使得遮罩边缘模糊
+
+
+第十四课
+		
+	遮罩完毕  鉴于遮罩不受影响  调整物体膨胀   得到未遮罩处突起图案
+
+	CTRL点击 空白处  	可反向选择    
+	CTRL点击模型		可创建遮罩模糊
+	CTRL+ALT点击模型	可创建遮罩锐化
+	
+	在移动旋转缩放模式下  
+	按住CTRL点击可出现根据模型边拉控制杆边创建遮罩的效果
+
+第十五课
+
+
+
+
+第十七课
+
+	deformation  整体调整
+	菜单  zplugin  subtool master  mirror 可镜像
+	ALT点击  选中点击的模型
+
+
+
+第十八课
+
+第十九课
+
+	subtool  duplicate  复制
+	deformation   mirror 镜像
+	
+
+第二十一课
+ 
+	CTRL+SHIFT 	SELECT笔刷   或框选
+
+	在CTRL+SHIFT +框选时  	可选择要保留的区域   
+	在CTRL+SHIFT+ALT框选时  可选择要隐藏的区域
+	按下空格键可以调整选框的位置
+
+	同样套索也是
+
+	会捕捉到模型的边 将一圈隐藏
+
+	空白点击为全显示
+
+	托盘中  display  double  背后显示	flip 法线反转
+
+	托盘中	几何体中    modified topo  修改拓扑结构   delete hidden  可删除隐藏部分
+
+		close  hole 可填补模型缺面空洞
+
+
+第二十二课
+	
+	CLIP修剪笔刷  	
+
+	CTRL+SHIFT 拖拽 出选框  （保留框内区域）   空格键调整位置   ALT键反向   （去除框内）
+	 圆形框矩形框 将该面拍平出现不必要的突起余量  
+	曲线切割 可按住ALT产生曲线   双击ALT键产生直角
+
+
+第二十三课
+
+	机械硬表面  
+	建立球体  重拓扑256   调整大型
+	多次裁切可得到有棱角感的
+	利用中心园拍平可创建特殊结构
+	利用重拓扑将布线平整
+
+	利用标准笔刷拖拽模式   配合ALPHA和遮蔽
+
+	笔刷快捷键  B  
+
+	I为插入外部笔刷  螺丝螺母  M键选择插入的模型  
+
+
+第二十四课
+
+	多边形组 polygroups
+
+	自动分多边形组
+	根据UV分多边形   插件中UVmaster可分UV
+
+	merge simulate  合并相似多边形组
+
+	group visible   根据显示的组
+
+	group  normal   根据法线分多边形组  根据面的夹角运算  可调整夹角条件
+
+	group  front 	当前视角所有面为一组
+
+	group  mask     根据遮罩创建组 并清除遮罩    CTRL+W
+
+	
+第二十五课
+	
+	subtool
+
+	list all 显示所有
+
+	弯形箭头调整模型层级位置
+
+	auto reorder  自动根据模型面数细分
+
+	all low  all high  调整显示的细分级别
+
+	duplicate 复制  
+
+	模型库中import的模型  在subtool中append追加  排在所有模型后
+					insert		排在当前选择模型后
+
+
+
+第二十六课   模型的分离合并
+
+	
+	subtool  -- split  分离
+
+	在有insert笔刷编辑过的模型中
+	split hidden  分离隐藏部分  隐藏操作之后再用
+	group split   多边形组分离  原物体和插入的模型分离为两个模型
+	simulate   相似分离
+	mask   遮罩分离	
+
+	subtool  -- merge  合并
+
+	向下合并
+	合并相似
+
+
+
+第二十七课
+
+	布尔运算
+
+	多物体时	SUBTOOL 模型后面    有交集 并集 差集
+	
+	dynamesh  中也有交集 并集 差集  
+
+	并集 差集可直接运算
+
+	立方体在上并集   圆柱体在下差集  merge down之后 在dynamesh中运算 立方体减去圆柱体
+
+	立方体在上并集   圆柱体在下交集集  merge down之后   在dynamesh 中  and   为两者交集 
+
+	交集无法用快捷键重拓扑
+
+	差集绘制  ALT+插入笔刷绘制  （默认法线反向）在dynamesh中运算
+	
+第二十八课
+
+	布尔运算错误时  可以用SPLIT部分分离
+
+	有细分时运算布尔   会产生是否根据最低级别运算   NO则保留细分运算  yes则根据最低级别运算
+
+	
+第二十九课
+
+	clay polish  抛光  硬边强化 平面抛光  
+
+	trim 修剪  完全切割填补    （和CLIP修剪拍平不同）
+
+	JPG文件可当作alpha笔刷使用
+
+	菜单栏 BRUSH --  auto masking 中有backmask 为背面遮罩
+
+
+第三十课   修剪与切线笔刷
+		
+	trim   删除封口   slice  仅删除 需要到集合体modify中封口
+
+	套索选择  左上右下  为保留    
+
+	
+	slice   曲线切片打组    多次切割 保留原先组的效果
+	圆形或者方形则不保留原先分组
+
+	几何体  edgeloops  -  panel loops  以多边形边缘来插入面制作平滑边界
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

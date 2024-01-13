@@ -1,0 +1,117 @@
+[
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\context.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\context.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/context.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\init.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\init.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/init.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\input.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\input.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/input.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\monitor.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\monitor.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/monitor.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\platform.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\platform.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/platform.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\vulkan.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\vulkan.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/vulkan.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\window.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\window.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/window.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\egl_context.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\egl_context.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/egl_context.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\osmesa_context.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\osmesa_context.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/osmesa_context.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\null_init.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\null_init.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/null_init.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\null_monitor.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\null_monitor.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/null_monitor.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\null_window.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\null_window.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/null_window.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\null_joystick.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\null_joystick.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/null_joystick.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_module.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_module.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_module.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_time.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_time.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_time.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_thread.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_thread.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_thread.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_init.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_init.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_init.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_joystick.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_joystick.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_joystick.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_monitor.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_monitor.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_monitor.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_window.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\win32_window.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/win32_window.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/_vendor_/glfw/src",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\wgl_context.c.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\_vendor_\\glfw\\src\\wgl_context.c",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/_vendor_/glfw/src/wgl_context.c"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/engine",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\g++.exe  @CMakeFiles/engine.dir/includes_CXX.rsp -g -std=gnu++17 -Winvalid-pch -x c++-header -include R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/engine/CMakeFiles/engine.dir/cmake_pch.hxx -o CMakeFiles\\engine.dir\\cmake_pch.hxx.gch -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\build\\engine\\CMakeFiles\\engine.dir\\cmake_pch.hxx.cxx",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/engine/CMakeFiles/engine.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/engine",
+  "command": "C:\\_PRO_\\mingw-w64\\mingw64\\bin\\g++.exe  @CMakeFiles/engine.dir/includes_CXX.rsp -g -std=gnu++17 -Winvalid-pch -include R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/build/engine/CMakeFiles/engine.dir/cmake_pch.hxx -o CMakeFiles\\engine.dir\\src\\main.cpp.obj -c R:\\NOTE\\linux-notebook\\CMake_专项笔记\\CMAKE_基础教程_示例\\demo_3rdlib\\engine\\src\\main.cpp",
+  "file": "R:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_3rdlib/engine/src/main.cpp"
+}
+]

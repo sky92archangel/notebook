@@ -1,0 +1,316 @@
+第一节
+
+菜单栏 File  level关卡 project 工程   一个工程内有很多关卡  
+
+菜单栏 Edit  undo撤销   ctrl+z 
+    
+  			编辑器设定   语言设定
+						Region&L  语言
+			工程设定     Project    maps&modes   
+						game default map   选择 打开是默认地图
+						default modes  -- default gamemode  默认游戏类型
+						default pawn class  主角类     放大镜可打开内容浏览器
+						game instance  关卡传送值 不同保留值等
+						movie  游戏片头
+			引擎设定     Engine     input 绑定键盘手柄等控制器键位  按键与松键
+
+菜单栏 Window  viewport 产生二个窗口
+
+
+
+Modes 模式   左方菜单栏
+
+	recently placed  最近放置
+	basic   ENPTY  空的类
+		point light   点光源  拖入  
+			
+【各类属性菜单栏 右下方  -- detail -- transfer  位置W旋转E缩放R （右方返回小三角回到世界原点000） W E R
+						静态光源 固定光源 动态光源
+						静态光源 只渲染一次 物体移动后 阴影存在  
+				-- light -- 强度 intersity
+					 -- 颜色 RGB SHV
+					 -- 光照范围 radius
+					 -- 影响世界 affect world 是否进行该光源的场景渲染
+					 -- 产生阴影 cast shadows 
+				-- detail -- collision 按照几何形状制造碰撞体积
+】
+	        player start  玩家出生点 
+		cube sphere cylinder cone 基本几何型
+		box trigger 触发扳机盒子 （正方形）
+		sphere trigger  触发扳机盒子 （球形）
+	Lingt 光照
+		directional light 模拟太阳光  方向光 强度
+		spot light 聚光灯 锥形   内圈外圈  -- detail -- light color -- inner cone angle 聚光边界模糊效果
+		sky light 天空光 在有天空球的时候才能用 对任何物品添加无死角的漫反射光 场景任何面都产生微反光
+	Visual Effect 后期效果
+		post prcess volume后期体积
+		atmosphere 云和大气 -- detail -- atmosphere
+		exponential height fog 雾化空气  
+		sphere reflection capture 反射球 减少场景光源增加光源影响力  用于水面大理石等
+		box 。。。
+		deferred decal 映射贴图  在模型上表面映射外加的贴图 体积范围内所有的模型表面
+	BSP 老式可编辑基本几何形状   （二叉空间分割）
+		创建完成后在 --Modes 里打开第五个选项卡 编辑几何 按住ctrl可多选
+
+	volumes 体积系统 
+		blocking volume 碰撞体积  为静态物品添加不可穿透的物理 用于较为复杂的碰撞体
+	all classes 所有物品 可用于搜索
+
+主界面 左上方   -- 三角 -- FPS 帧数 
+			-- game view 游戏画面 去除各类标记线框
+			-- field of view 透视镜头焦距
+		-- perspective 透视图 视角窗口切换 线框三视图
+		-- 光照切换  光照贴图  细节光源  不带光  反光效果 无光白贴图 -LOD模型细节替换
+		-- show 显示 物品过滤  
+主界面 右上方   -- 位置W 旋转E 缩放R 
+		-- 物体自身坐标 世界坐标
+		-- 网格分割程度
+		-- 旋转分割程度
+		-- 缩放分割程度
+		-- 摄像机移动速度 根据场景大小决定
+		-- 最右小窗口 四视图切换用
+主界面 上方
+		-- save 保存只场景 
+		-- setting 设置
+			【-- world setting 世界设定  --detail--world--enable  --Window多关卡合并  沙盒制作 
+			【-- kill z  死亡高度 超过一定高度范围就在场景内删除消失
+			--引擎可扩展性  游戏渲染效果
+		-- 蓝图
+		-- 动画
+		-- 构建
+		-- 播放 -- 模拟 物理模拟  --detail --phycics --simulate phycics 选中  制造物理化效果  
+
+content browser 内容浏览器  位于 上方选项卡  或者下方窗口   
+		包含游戏所有所需素材 直接拖动素材 
+		导出模型文件 ASSET ACTIONS  -- export
+		选中物品 进入场景  右键选项可添加替换该物品
+
+
+右方modes  第三 地形编辑 
+		材质 分辨率 大小 
+		创建后雕刻
+
+右方modes  第四 植被多重物品编辑
+
+
+
+世界大纲  右上方  可以寻找场景内所有模型 
+
+
+
+第二节
+	主讲蓝图
+	内容浏览器中新建文件夹 -- 右键新建蓝图 Blueprint class
+		-- actor 物品  非主角
+		-- pawn 可事实更新的物品 
+		-- character  主角（可加控制器）
+		-- player controller 主角控制器 行为树 有限状态机
+		-- game mode 默认菜单等
+		-- actor component
+		-- scene component
+	Ctrl+B 查找当前选中模型的内容位置   也可以从大纲寻找
+		-- 蓝图放大倍数和场景放大倍数不同
+
+	蓝图内 --detail  --collision碰撞
+			 --Materials材质
+			 -- static +放大镜 查看静态物品
+				--collinsion  各种精度
+				-- convex 按照细节细化制作碰撞盒
+	查看静态物品	-- static mesh settings
+				-- collision complexity	 使用复杂碰撞 物体表面为碰撞盒（消耗更多资源）
+
+			--UV  选择分割方式
+
+
+	触发机制  例 门的开关 
+		在门的前方放置 BOX trigger 或者 box collision 去除碰撞 
+			BOX中    有   ignore完全无反应   overlap D 重叠触发  collision碰撞   选用overlap
+			--detail --event  --on component begin overlap   点击进入蓝图事件编辑
+			
+				-- other actor + - cast to <主角物体名称>  主角触碰之后就产生反应机制
+ 				- cast to <主角物体名称> +- print string  场景蓝图机制触发时 打出一段字串 （检验机制触发）
+				- set relative rotation 旋转动作
+				- customer event  自定义事件
+				- customer event + - set relative rotation 将旋转动作加入自定义函数套
+				- cast to <主角物体名称> +- print string + - custome event + - set relative rotation
+				此时发现门开太快 添加lerp函数   0-1  A-B  alpha确定A到B的过程
+				此时再加入timeline函数  
+				时间线双击打开编辑器  f添加浮点数轨迹 名为DOOR001
+				length为时间限 右键ADD KEY关键点
+				关键1 为零  关键2 为时间限 值为1
+				进入蓝图 将timeline的函数新建的浮点轨迹链接至lerp函数的alpha处  表示时间限内完成0到1的动作
+					 将update接入- set relative rotation  每帧更新
+					custome event 接入 timeline的play  
+				timeline 	-- reverse 反向播放
+						-- stop 停止
+						-- set new 
+				timeline中 f添加浮点数轨迹中函数右键AUTO等调整开门速度
+		
+		离开后自动关门
+				设定custome event （door close）函数套子（可自定义名字）
+				--detail --event  --on component end overlap 离开触发机制
+			
+		仅仅使用一次触发  触发动作完成后BOX将自动消去
+				  将box接入 destroy component 函数 的目标中  
+				  将custome event（door close）接入 destroy component函数
+		平移旋转  set relative location  
+		计数  flipflop函数 
+		-- blueprint -- ADD NEW variables  可添加新参数
+	
+
+场景光照触发
+		--detail -- rendering
+	上方菜单栏 -- blueprint  -- level blueprint  关卡蓝图  
+	在场景中 选中聚光灯 spot light  
+	进入场景蓝图  创建 toggle visibility 函数  创建 F按键函数
+	-- F  -- toggle visibility     在场景中 按下F键就能控制光源的开关
+	
+场景光照固定位置的按键触发
+	在场景中建立且选中触发盒子
+	场景蓝图创建 -- add on actor begin  overlap 函数（针对触发盒子）  
+	创建cast to <主角物体名称>
+	右方场景蓝图添加参数lightopen 布尔型 默认为否  触碰后为ture
+	
+	创建branch函数分流    
+	场景蓝图创建 -- add on actor end overlap 函数
+	
+
+物品的循环动作控制
+	蓝图创建 event beginplay 函数（仅游戏开始就触发一次）  和   event tick 函数（随时计算，耗资源较为严重，尽量少用）
+	加入timeline函数  
+	时间线双击打开编辑器  f添加浮点数轨迹  勾选loop  可以使得动画循环
+	-- event beginplay -- timeline  -- set  （位置旋转缩放） 在场景开始就循环播放物体的动作
+	注意：参与运动的物体 的 --detail（细节） --physics（物理） --constraints（约束） 中为default
+
+
+
+与主角发生碰撞的循环播放物体或带动人物运动的物体
+	 都要在 --detail -- collision presets -- object type 切换至载具 vehicle
+
+
+
+第三节
+	
+	角色控制 场景中选中角色  Ctrl+B 双击打开角色 
+	capsule component   胶囊状的角色范围
+	camera Boom 围着角色旋转的 相机  --detail --camera  --target arm length镜头远近   --camera也有滤镜等效果 
+	摄像机有自身旋转和围着角色旋转  两种模式
+	character movement 角色移动属性 移动 跳跃  奔跑 游泳  飞行 下蹲 等 （第一人称中用缩放Z轴制作蹲下动作）
+			character movement  --detail -- character movement （各种动作） 动作属性设定
+	组件中 角色选项  -- detail  -- pawn  可设定 角色与镜头的同步方式  
+		--use control rotation
+			-- yaw（Y）左右朝向同步地面旋转同步 
+			-- roll（Z）左右旋转同步（左右倒）  
+			-- pitch（X）前后旋转同步（前后倒）
+			用于制作第一视角操作物品
+
+	按键绑定  上方菜单栏 -- project setting  -- input  一个动作绑定多个键位
+	蓝图中 框选蓝图组后 按下 C 可标记蓝图组名称	
+
+第三人称范例中
+		蓝图中 -- get control rotation 主角获得三个值 -- break rot 打破前面的一个值 --make rot重组新的值  -- get foreword vector 
+		蓝图中mouse input部分  --input axis turn  --input axis lookup  
+		蓝图中 jump 为瞬时动作
+
+	例子：制作一个主角色
+		在资源文件中选中要建立蓝图的物体  -- 右键 -- asset actions --create blueprint （） 然后选择保存路径  即建立蓝图的第二种方法
+		在class settings 组设置里 -- detail -- class options （parent class） 可以修改蓝图的类型
+		建立完成后 产生-mesh  -staticmesh   -character movement  -arrowcomponent
+		也可以在文件夹中建立 
+		
+		随后用add component添加camera摄像机   
+		随后用add component  --  spring arm 摄像视线  
+		将camera 拖动到 spring arm 下层
+	
+	进入场景  选到-- world setting -- game mode  -- default pawn  修改默认主动控制角色
+		摄像视线spring arm中 -- detail -- camera settings --use pawn control rotation  就是控制摄像机围绕主要角色旋转
+
+
+	鼠标控制摄像机 
+		mouse input 部分  用鼠标控制主角的背后视角
+			--input axis turn -- add control yaw input
+			--input axis lookup  -- add control pitch input
+	跳跃
+		jump部分  瞬间动作 input action jump （pressed连接 jump函数）（released连接 stop jumping函数） 
+		在组件character movement中  的 --detail -- jump z - 调整跳跃高度
+	移动
+		-- get control rotation 主角获得三个值 -- break rot 打破前面的一个值 --make rot重组新的值  
+			-- get foreword vector  --add movement input 键位输入的正负控制前进后退 -- input axis move forward
+			-- get right vector --add movement input 键位输入的正负控制左移右移  -- input axis move right
+	
+	input axis turn（lookup）input axis move forward（right）按键设定来源于
+		上方菜单栏 -- project setting  -- input --bingdings 一个动作绑定多个键位
+ 		action mapping 按键动作 和 axis mapping 鼠标移动
+	范例中的人物转身动作为模型本身的动画 若需要在角色蓝图中编辑 则 可用以下方法
+		蓝图中添加 set relative rotation 来控制转身
+		配合了lerp函数和timeline函数控制转向速度
+
+第四节
+
+	弹丸 子弹 蓝图制作
+		建立蓝图 actor物件
+		projectile movement 添加运动属性
+		从资料文件中给定弹丸形状
+		子弹 --detail -- projectile --speed（gravity）等 初速度 最大速度 重力影响等
+		回到主角色蓝图  在项目输入中添加fire绑定鼠标左键
+		回到主角色蓝图  创建 --input action fire  
+			-- spawn  ai from class（子弹在AI的出生点）
+			-- spawn emitter （粒子发射器 出生点） 
+			-- spawn actor （actor物品出生点）
+		选用actor出生点 class选择<弹丸名称>
+		-- spawn actor <弹丸名称> 中class选物体  spawn transfer 运动位置状态
+		蓝图中 创建 --get actor rotation  --get actor location 
+		在-- spawn actor <弹丸名称> 中 从spawn transfer拉出make函数 绑定位置和旋转
+
+		若需要在主角特定位置产生子弹  
+		方案一：
+		在蓝图中添加 球形碰撞 放置到需要发射的地方 
+		将球形碰撞拉至蓝图 -- sphere -- get world location  （把原来的actor location替换掉）
+		方案二：
+		若不同物体都有同一个产生子弹的插槽接口  
+		在蓝图中建立一把shotgun 
+		进入该物品浏览模式  在--socket manager中  create socket命名为gun_point
+		将其移动到插槽接口位置 红色x位移箭头要朝向出口（向外）
+		蓝图中创建 -- get socket location函数  中 in socket name  修改命名为之前确定的gun_point
+		此时actor location无需使用
+
+		也可在蓝图中创建参数gun  -- detail   类型为 actor component 组件类型
+		--event begin play 游戏起始激活  -- gun（set）建立的参数gun的设定函数 --shotgun 刚才创建的子弹出发体
+		
+		方案二的插槽接口可以用插槽  socket- gun_point 添加到任何要出现子弹的发射体上   实现替换发射体后也能实现打出子弹
+		替换时需要把物体放入 static Mesh 静态网格中
+		也可将其他物体用蓝图attach to函数应用到插槽的位置
+
+		--event begin play  -- set（mygun） -- 发射体（主角）mesh函数 
+		-- 静态网格函数   接入 --attach to函数的 in parent
+		-- 发射体（枪）mesh函数	   接入 --attach to函数的target
+		-- attach to函数中  in socket name 输入插槽的名称
+			attach type  选  snap to target  keep world scale
+
+
+	自动捡起枪械的动作逻辑制作
+		场景中建立地面枪械   gun01   --detail --collision中修改object type 为 world dynamic  仅对pawn有overlap
+		在地面枪械蓝图中建立碰撞盒 
+		在主角蓝图中  建立 -- on beginover lap  -- cast to <主角>  -- attach actor to component
+		地面枪械函数 接入--attach actor to component 的 target
+		-- cast to <主角>拉出 <带有插槽的主角组件名>函数 接入  --attach to函数的 in parent
+		in socket 插槽名称  
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

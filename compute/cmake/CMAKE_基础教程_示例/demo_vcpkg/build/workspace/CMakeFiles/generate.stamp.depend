@@ -1,0 +1,20 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.24/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake
+D:/NOTE/linux-notebook/CMake_专项笔记/CMAKE_基础教程_示例/demo_vcpkg/workspace/CMakeLists.txt
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/fmt/fmt-config-version.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/fmt/fmt-config.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/fmt/fmt-targets-debug.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/fmt/fmt-targets-release.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/fmt/fmt-targets.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/spdlog/spdlogConfig.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigTargets-debug.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigTargets-release.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigTargets.cmake
+D:/WORKSPACE/CODE_PRIVATE/vcpkg/installed/x64-windows/share/spdlog/spdlogConfigVersion.cmake

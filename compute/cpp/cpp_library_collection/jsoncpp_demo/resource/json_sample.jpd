@@ -1,0 +1,24 @@
+{
+    "id": 123,
+    "name": "Jsaon-jpd",
+    "team": {
+        "title": {
+            "id": 12312,
+            "name": "Test Team",
+            "count":36.14
+        },
+        "members": [
+            {
+                "id": 345,
+                "name": "Test MA"
+            },
+            {
+                "id": 678,
+                "name": "Test MB"
+            }
+        ]
+    },
+    "department": ["r&d","HR"],
+    "document": ["0:content","1:info","2:plan","3:todo-list","4:summary"]
+ 
+}

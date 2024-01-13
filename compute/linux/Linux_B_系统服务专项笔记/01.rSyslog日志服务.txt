@@ -1,0 +1,120 @@
+第一节
+
+	日志：
+
+		日志是系统用来记录系统运行时的一些相关信息的纯文本文件
+	
+		日志的目的是为了保存相关程序运行状态，错误等，为了对系统进行分析保存历史记录以及在出错时发现分析错误使用
+
+		LINUX系统一般保存一下类型的日志：
+
+			-内核信息
+			-服务信息
+			-应用程序信息
+
+	rsyslog
+
+		LINUX系统中来实现日志功能的服务称之为 rsyslog
+	
+		在CENTOS5及更早用的syslog，rsyslog是syslog的增强版本
+	
+		rsyslog一般默认会安装，并且被设置为自动启动，可以通过以下命令控制
+
+			service rsyslog status
+
+			service rsyslog start | stop restart
+
+		rsyslog配置文件：
+
+			/var/rsyslog.conf
+
+		日志信息一般保存在：
+	
+			/var/log
+		
+		我们常用 tail -f logfile方法来实时监控日志文件
+
+	Facility
+
+		rsyslog通过Facility概念来定义日志消息的来源，以方便对日志分类
+
+		Facility有以下几种
+
+			-kern		内核消息
+			-user		用户消息
+			-mail		邮件系统消息
+			-daemon		系统服务消息
+			-auth		认证系统消息
+			-syslog		日志自身消息
+			-lpr		打印系统消息
+			-authpriv	权限系统消息
+			-cron		定时任务消息
+			-news		新闻系统消息
+			-uucp		uucp系统消息
+			-ftp		ftp服务消息
+			-locol0～locol7
+
+	Priority / Severity Level
+
+		除了日志来源外，对同一来源产生的日志消息，还进行优先级划分
+		
+			-Emergency	系统已经不可用
+			-Alert		必须立即进行处理
+			-Critical	严重错误
+			-Error		错误
+			-Warning	警告
+			-Notice		正常信息，但是较为重要
+			-Informational	正常信息
+			-Debug		debug信息
+
+	rsyslog配置
+
+		rsyslog配置文件的规则如下：
+		
+			facility.prioriy	log_location
+
+		如：
+		
+			mail.*		-/var/log/maillog	无论何种级别产生的mail日志都记录到该位置  
+			
+			“-”无需等待日志从缓存同步到硬盘，增加效率，但是断电后缓存内日志丢失
+
+			*.info;mail.none;authpriv.none;cron.none	/var/log/messages  无论何种来源的info级别的日志都记录在该位置
+
+		在rsyslog.conf中
+
+			添加 kern.error 	/var/log/kernel_error
+
+		如果需要将日志发送至一个统一的日志服务器，则可以如下配置
+
+			*.*	@192.168.1.1	(用UDP协议发送)效率高
+			*.*	@@192.168.1.1	(用TCP协议发送)可靠
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

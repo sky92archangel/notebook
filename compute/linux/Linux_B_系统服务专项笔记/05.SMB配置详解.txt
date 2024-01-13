@@ -1,0 +1,174 @@
+﻿Linux和windows在虚拟机下文件共享有很多种方式，常用的有使用VMware Tools共享和Samba服务器进行共享，使用VMware Tools这里就不说了，我使用的是Samba服务器。
+
+其实很简单：
+1、首先下载Samba服务器：
+
+sudo apt-get install samba samba-common
+sudo apt-get install system-config-samba cifs-utils
+
+(sudo apt-get install samba)
+ 
+2、添加samba用户
+
+sudo useradd samba_lennon   # 添加一个用户，不需要设置密码，用来登陆的。
+
+sudo smbpasswd –a samba_lennon   # 设置密码
+
+ 
+
+注意：添加的用户必须是要存在的ubuntu用户，否则可能会出现
+
+ 
+
+Failed to add entry for user user1.
+
+错误
+
+image
+
+另外smbpasswd 的几个常用选项：
+
+            -a    添加一个用户 
+            -x    删除一个用户 
+            -d    禁用一个用户 
+            -e    解禁一个用户
+
+ 
+
+samba常用的服务器管理命令：
+
+
+# 停止 SAMBA 服务 
+sudo /etc/init.d/samba stop 
+# 启动 SAMBA 服务 
+sudo /etc/init.d/samba start 
+# 重新启动 
+sudo /etc/init.d/samba restart
+
+
+ 
+3、创建一个共享目录（目录随意指定，这里创建一个临时的测试）
+
+mkdir ~/share
+
+4、配置服务器：
+
+sudo vi /etc/samba/smb.conf
+
+文件中相关属性如下
+
+
+
+[share]                       #  任意名字
+path=/home/lennon/share       #  需要分享的文件夹的绝对路径
+available = yes 
+browseable = yes 
+public = yes 
+writable = yes 
+valid users = samba_lennon    #  分享专用的用户名  就是之前添加的samba用户
+create mask = 0700 
+directory mask = 0700 
+force user = nobody 
+force group = nogroup 
+
+
+
+ 
+
+workgroup = WORKGROUP        #  要和windows工作组的名字一样
+
+ 
+
+#  注意这里的工作组一定要正确填写！否则登陆不上！
+
+windows计算机系统属性   计算机名   更改工作组或域 可以查看
+
+
+
+其他两项配置：
+
+
+# public shares, not just authenticated ones
+   usershare allow guests = no
+
+
+mous connections
+  # map to guest = bad user       #需要注释掉
+
+
+如果出现乱码在[global]选项里配置：
+ 
+
+workgroup = WORKGROUP
+
+display charset = UTF-8
+
+unix charset = UTF-8
+
+dos charset = cp936
+
+ 
+ 
+5、重启服务器
+
+sudo /etc/init.d/samba restart
+
+ 
+6、测试
+
+smbclient -L //localhost/share 或者 
+smbclient -L //127.0.0.1 -U samba_lennon //这时输入的密码就是你刚才设置的samba密码
+
+ 
+
+ 
+7、在windows中访问共享目录
+
+ 
+\\192.168.233.131这个ip地址可以使用ifconfig命令得到：
+
+image
+
+回车后可以看到共享的目录了，双击share文件夹：
+
+ 
+
+好了，可以共享了。
+
+image
+
+注意：如果你的vmware的服务关了也会出错，解决办法是打开vmware的网络服务就行了：
+
+win+r 输入services.msc回车
+
+ 
+
+找到VMware DHCP Service和VMware NAT Service启动就没问题了。
+
+ 
+
+
+附：关于samba服务器的一些配置简单描述
+
+（1）全局设置部分
+
+            security = user    这行设置了samba的安全等级，Samba一共可以设置四个安全登记，由底到高分别为： 
+            share                  这个选项表示任何人都可以不需要输入密码登录。 
+            user                    这个是Samba的默认级别，要求每个用户必须输入密码才能登录。 
+            server                 user级别的密码都是保存在本机上，而server级别的密码和用户名都保存在另一台主机上。 
+            domain               这个级别要求网络里必须有一台Windows的域控制器，验证工作由域控制器来完成。 
+                                      需要注意，只要输入用户名和密码的级别，其用户名一定首先也是Linux系统内的用户
+
+ 
+
+（2）共享设置部分
+
+添加一个共享文件夹设置如下  
+
+    [share]                                        共享文件名，不需要与实际文件名一致 
+    comment = my share directory     对这个共享分支的描述 
+    path = /home/share                      系统的共享目录，必须为绝对路径 
+    public = yes                                是否允许所有人都能够看到此目录，no为看不到 
+    writable = yes                             是否允许用户在此目录下可写，no为不可些，如果可写，还需要目录具有写权限 
+    read only = yes                           设置用户是否只读 
+    vaild users = username                设置只有 username 用户有效。

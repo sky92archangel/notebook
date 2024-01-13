@@ -1,0 +1,188 @@
+第一节
+
+	SMB
+		SMB协议是win中使用的文件的共享协议，我们在LINUX的系统或者其他类UNIX系统（BSD MAC UNIX）
+		可以通过samba服务来实现SMB功能
+
+		samba服务是SMB的一个开源实现，主要功能如下：
+
+			通过SMB协议进行文件共享
+			通过SMB协议进行打印共享
+			加入一个win2000/2003/2008域环境
+			通过win域环境进行认真操作
+
+		SMB协议又称之为CIFS（Common Inernet File System）协议	
+	
+	samba
+			
+		安装
+
+			yum install -y  samba
+
+		samba三个服务
+
+			- smbd	
+				提供文件及打印共享功能，用139和445端口2
+			- nmbd
+				提供NetBIOS支持，使用137端口
+			- winbindd
+				提供针对win2000/2003/2008的用户及组信息的解析功能
+
+		一般作为文件共享使用samba只需要smbd服务
+
+		winbindd服务需要单独安装
+				
+			yum install -y samba-winbind	
+
+	客户端
+
+		win客户端直接打开连接
+
+			\\192.168.1.100\linuxcast-smb
+			
+		linux或者类UNIX的图形界面使用以下方式
+	
+			smb://192.168.1.100/linuxcast-smb
+
+		linux使用CLI下可以使用smbclient命令连接
+
+			smbclient //192.168.1.100/linuxcast-smb -U linuxcast
+
+		也可以通过mount挂载命令挂载smb共享
+
+			mount -t cifs //192.168.1.100/linuxcast-smb /mnt -o username=linuxcast,password='linuxcast'		
+
+	samba服务
+
+		samba服务的主配置文件
+
+			/etc/samba/smb.conf
+
+		samba服务可以所谓独立服务器使用，也可以加入2win的域环境
+
+		作为独立服务器时，samba使用linux用户作为其用户，密码需要单独创建
+
+		当加入Windows域环境是，一般使用Windows域用户
+
+		samba有两种安全模式：
+			- User-Level	默认安全模式，使用用户名，密码进行认证
+			-Share-Level	只需要密码就可以访问，但与部分win客户端有兼容问题，不推荐使用
+
+	samba配置
+
+		samba的配置文件
+
+			/etc/samba/smb.conf
+
+		配置文件分为三部分
+
+			- [global]	定义全局配置
+			- [homes]	定义对用户家目录的共享配置
+			- [printers]	定义打印机配置
+
+	Global配置
+
+		smaba常用的global配置如下：
+
+			配置工作组信息
+
+			workgroup = WORKGROUP
+			server string = linuxCast.net samba server
+
+		配置安全模式
+
+			security = user
+		
+		支持的安全模式
+
+			- user		默认
+			- share		创建匿名共享
+			- domain			
+			- ads
+			- server
+				
+	用户家目录共享
+
+		samba服务配置问爱你默认配置好了用户家目录共享
+		每个linux用户的家目录都可以使用smaba服务
+
+			[homes]
+				comment = Home Directorties
+				browser = no
+				writable = yes
+
+		为要通过smb协议访问家目录的用户创建samba密码
+		
+			smbpasswd -a linuxcast
+		
+		启动samba
+
+			service smb start
+
+		通过smbclient登录
+
+			smbclient //192.168.1.100
+
+	创建独立共享
+
+		我们可以通过向配置文件/etc/samba/smb.conf尾部添加
+
+		[linuxcast-smb]
+		comment = ...		注释
+		path = /linuxcast-smb	共享文件的绝对路径
+		vaild user = linuxcast	能够使用该共享的用户
+		public = no		是否公开的（不登录也能看见）
+		browsable = yes		是否可浏览
+		writable = yes		是否可写
+		printable = no		是否打印共享
+		create mask = 0765	创建文件的权限
+
+	创建匿名共享
+
+		如果我们需啊一个无需用户名就访问的开放共享可使用如下：
+
+		修改samba的安全级别为share
+		
+			[global]
+			security = share
+
+			[linuxcast-pub]
+			comment = 
+			path =  
+			public = yes
+			writable = yes		（read only = yes 只读）				
+			guest ok = yes		（guest only 为只允许客户访问)
+
+	其他
+		
+		我们可以用testparm检查配置文件是否正确
+
+		我们可以通过smbclient查看一个指定服务器有哪些共享
+
+			smbclient -L 192.168.1.100
+			smbclient -L 192.168.1.100 -U linuxcast   （linuxcast为用户名）
+
+
+					
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

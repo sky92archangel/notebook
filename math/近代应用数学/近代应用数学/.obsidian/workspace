@@ -1,0 +1,147 @@
+{
+  "main": {
+    "id": "c6fd803733a1e905",
+    "type": "split",
+    "children": [
+      {
+        "id": "6077724575cc3db0",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "南京大学-近代应用数学-群论.md",
+            "mode": "source"
+          }
+        },
+        "group": "42ec413088cbfbea"
+      },
+      {
+        "id": "885248258a803f60",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "南京大学-近代应用数学-群论.md",
+            "mode": "preview"
+          }
+        },
+        "group": "42ec413088cbfbea"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4fcd3eaf62198a95",
+    "type": "split",
+    "children": [
+      {
+        "id": "0a3e019a04d5048b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a86f28a4ef4fe582",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cbae7a0f7b808664",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d8206d572d9b8b3e",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3ccdaee542104a97",
+    "type": "split",
+    "children": [
+      {
+        "id": "1563ebb6cd0b487a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b97fe02e7db337d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "南京大学-近代应用数学-群论.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ab8a1f5b7d09b644",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "南京大学-近代应用数学-群论.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b82f719280393816",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "南京大学-近代应用数学-群论.md"
+              }
+            }
+          },
+          {
+            "id": "becbf44da599f24e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "885248258a803f60",
+  "lastOpenFiles": [
+    "南京大学-近代应用数学-群论.md"
+  ]
+}

@@ -1,0 +1,280 @@
+
+	右键 旋转视角
+	ctrl+右键 缩放视角
+	alt+右键 平移视角
+
+番外操作
+	
+	使模型整个低头
+		套索框选工具  选中头部  
+		ctrl+左键  反选
+		然后用顶部旋转工具  拉出范围
+
+
+
+
+
+
+第一课
+	tray  软件右方  
+	顶部menu 打开顶部面板
+	
+	tray 右下方tool  
+	左右小三角为开启关闭面板
+
+	中间为画笔  上方为light box
+
+	画布周围都是shelf  
+	左方  brush  stroke   等 对应顶部menu内
+
+	projection master 非常重要 但是 较为复杂
+	light最常用基本组件
+	quick sketch  有时用到
+	
+	edit draw move scale rotation 编辑面板
+	
+	mrgb rgb zadd zsub 等都是brush中的空间
+
+	focal shift  笔刷硬度
+
+	右方shelf  move scale rotate 
+	scroll平移画布  可平移到画布外
+	actual回复到视口
+
+	document中可以修改画布视口大小
+
+	按住Ctrl可以查看操作的快捷键 
+	
+
+第二课
+	project 和 tool
+	project中有所有tool的信息
+	
+	视角
+		移动   alt+RML  放开鼠标
+		缩放   alt+RML  放开alt 放开鼠标
+		旋转   点击空白处
+		多正视图   转到大概位置 shift
+			点击鼠标左键转到需要的视角大概位置  
+			然后按住shift  
+			放开鼠标左键  
+			然后放开shift
+
+第三课
+
+	雕刻模型工具介绍
+	设置 
+	light box 选择基本型
+	flow可以显示地面网格
+	选择笔刷  和大小S（一下）   硬度
+
+	在编辑时 右方shelf中的perspective（透视）  必须打开
+	
+	draw 选项中调整perspective透视 为50
+
+	雕刻时按住shift可以重新对物体拓扑 有平滑作用
+
+	active symmetry  物体编辑对称   在顶部栏  transform  中找到 
+	X键就是关于X轴的对称编辑
+ 
+
+第四课  
+
+	standard 标准笔刷  圆形突起   
+	按住ALT则是圆形下凹
+	zadd  突起  zsub下凹   用alt切换就好
+	
+	shift 从任何笔刷切换为为平滑笔刷
+	
+
+第五课
+
+	polyf可以查看网格
+	在右下方面板里Ggeometry里有Dynamesh  对模型重拓扑
+	按住ctrl在画布空档处拉框
+
+
+第六课
+
+	clay笔刷  平推  alt为平凹
+	在右下方面板里Ggeometry里有Divid 细分面
+	得到两个细分等级
+
+	clay buildup  笔刷  无限制生成突起	
+	
+
+第七课
+
+		knife -- dam standard brush   细节凹槽
+		凡是需要调整都能用move笔刷
+第八课 
+	
+	遮罩笔刷   有遮罩的地方编辑时不会发生变形
+	按住ctrl可打开遮罩笔刷
+	右下方面板  - masking 为遮罩功能
+		clear为清除所有遮罩
+		inverse为反选  也可以按住ctrl在空白处点击鼠标左键  （打框则为清除）
+	
+	按住 ctrl 和 鼠标左键 为遮罩笔刷
+	按住ctrl+alt 和 鼠标左键 为擦除遮罩笔刷
+
+	D和shift+D可以切换细分等级
+
+
+
+第九课	
+
+	保存 ztool 或zpr  不能保存为zdoc
+
+	-- tool  -- save as
+
+	从tool中载入  需要拖入画布  在编辑模式外可以多次创建模型
+
+	进入编辑模式 按ctrl+N 画布中只留下一个模型
+
+第十课  
+	当模型左右不对称时  可以关闭对称--transform--activate symmetry
+	按住ctrl打框  遮罩  
+	右下方面板 deformation  smart resym  
+	将遮罩部分对称到未遮罩的地方
+
+	可以级级细分操作
+
+
+第十一课
+	设定快捷键
+
+	顶部菜单brush  将tary 拖到右下方面板
+	
+	R清除面板所有笔刷    将笔刷加入其中
+
+	ctrl+alt+点击需要添加快捷键的笔刷  然后按下快捷键
+
+	保存快捷键设置
+		--preference--hot key -- store  （按save是保存为设定文件 可进行设定复制）
+
+第十二课
+
+	窗口是否全屏
+		窗口大小设定完成后 
+		进入--preference==config--store config  保存
+	将zstartup-configfiles中的CFG文件删掉 就能将软件返回默认
+
+	预制布局
+	右上角  layout可查看各种默认界面设定
+	--preference-config-restore custom UI  可以保存界面设定
+
+	--preference-init zbrush - config-enable customize 打开所有窗口
+	
+	可将功能拖入面板    ctrl+alt将键位拖入画布可消除该键
+	F集中到物体
+
+第十三课 
+
+	雕刻层级关系
+	tray面板中layer  可以建立层级  所做操作都会记录且可反向加倍
+	若想要保留修改记录且删除层级 则按下bake all  然后删除层级
+ 
+	standard - low level - work 
+
+第十四课
+	
+	claybuildup可以创建褶皱纹路
+	点击顶部菜单brush （左上角小图标）  右方面板 -- depth --imbed 可以调整笔刷强度
+
+	左方面板可以用alpha通道   添加各种形态  可自定义笔刷
+
+第十五课
+
+	trim dynamic笔刷  削除压平
+	hpolish brush 创建干净面  平整切面
+ 	slash 3 拉出凹槽 类似Dam standard
+  
+	transform  -  照相机图标  （快捷键为shift+S）创建快照
+
+第十六课
+
+	右方面板  Daformation   各种笔刷对模型整体的影响强度调整
+		imflat deflat   膨胀干瘪工具
+	mask by cavity  -- intensity  让凹陷处使用遮罩  
+		blur 模糊 shape尖锐
+	view mask 可以关闭遮罩显示 编辑时不受影响
+	
+	morph target 创建 后   打开需要把修改记录到的目标层级的REC  然后在morph中switch
+	可以将未打开层记录的操作计入到某一层级中
+	最后将创建的morph删除
+
+
+	建模需要	
+	move
+	standard
+	dam standard
+	slash 3 
+	trim dynamic
+	clay buildup
+
+	整体处理
+	mask by caving
+	deformation
+	inflate 
+	polish
+	morph 
+	
+
+第十七课
+
+第十八课		
+	subtool下append 可添加其他组件   
+	
+	例如添加了 sphere  后   用Dynamesh  resolution 重拓扑 且 增加细分
+
+	polyf下有transparency和ghost键 透明度  便于编辑
+
+	Dynamesh开启时不要建立层   只用resolution增加细分时 需要关闭Dynamesh
+
+	头发制作从球形开始  使用alpha通道
+ 
+
+第十九课
+
+
+	笔刷工具调试面板中  
+	-- tablet pressure -- use global setting  调整笔刷 变化重度 
+
+	snakehook  外拉工具  力道非常强  创建齿状  蛇牙等
+
+
+第二十课
+
+	身体基本模型
+
+	使用dymesh -- insert brush
+
+	floor选项的图标右上角有  Y和Z  可以转换基本面的位置和朝向
+
+	菜单Draw 中  grid size  网格大小  可做身体建立参照
+	
+	move scale rotate  可移动雕刻的物体   移动时按住shift 正交
+	出现三点线 外层橙色 内层红色  外层定位 内层移动影响
+	可以用三点线确定缩放中心
+	
+	insert sphere brush  在同一物体中添加球形
+
+
+第二十一课
+
+	移动物体时按住Ctrl可以在同一模型内创建另一个物体  
+	dynamesh  中group可将一个模型内多个物体保持分离
+
+第二十二课
+
+	insert sphere brush  拉出拖回会产生缩放效果  按住shift则保持三维同比例缩放
+
+	curve tubes 根据曲线拉出物体
+	当曲线处于可编辑时调整好笔刷大小编辑曲线 就能产生相应大小的曲线柱放样
+	stroke 查看曲线编辑模式   band弯曲编辑
+
+
+第二十三课
+	
+	

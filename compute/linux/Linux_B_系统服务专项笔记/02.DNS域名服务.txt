@@ -1,0 +1,436 @@
+第一节	DNS基础及域名系统架构
+	
+	域名
+		IP地址难记，所以使用域名管理
+
+			www.google.com	www.linuxprobe.com
+
+		严格域名最后还有一个 "."  但一般不写
+
+		域名分为三部分用“.”分割
+
+			-类型	表示域名的类型
+			-域名	域名城
+			-主机名	该域中的某台主机名称
+
+			www.	linuxcast.	net
+			主机名	域名		类型
+
+		DNS
+
+		每个域名代表一个IP，而DNS就是用来在IP与域名之间进行转换服务
+
+			www.linuxcast.net	61.1.1.1
+		DNS（Domain Name System）服务有DNS服务器提供
+
+		
+			1.本机PC访问www.linucast.net 	------------------->	DNS服务器 61.134.1.4
+						DNS请求
+
+			2.DNS服务器 61.134.1.4		------------------->	本机PC		
+						www.linucast.net=61.1.1.1
+
+			3.本机PC访问61.1.1.1		------------------->	www.linucast.net：61.1.1.1网站
+
+		DNS客户端
+
+			日常使用支持计算机一般都是作为一个DNS客户端使用
+			应用程序，服务，进程通过操作系统底层的功能发起对DNS服务器的查询对指定域名解析
+
+			linux中一般只用系统底层提供的gethostbyname()功能进行域名解析
+
+			解析可以基本基于以下几种方式：
+
+				- 文件	（/etc/hosts，/etc/networks）指定域名与IP的匹配
+				- DNS	（/etc/resolv.conf 目前已经能手动修改）指定DNS服务器    （改用/etc/sysconfig/network-scripts/ifcfg-eth0）
+				- NIS		已淘汰	
+
+			可以通过配置文件/ect/nsswitch.conf控制查询顺序
+			hosts：files dns	files就是指查询host文件
+			
+		DNS专用查询命令
+
+			命令host可以用进行DNS查询
+
+				host www.bilibili.com
+
+			命令dig用于进行DNS查询，输出较为详细的信息
+
+				dig www.bilibili.com
+
+			命令host，dig都不会使用/ect/nsswitch.conf的配置，只会通过/etc/resolv.conf进行DNS查询
+
+		DNS查询
+			DNS是树状结构，查询是根据域名从右到左查询，每一级有一个独立或多个服务器
+
+			www.bilibili.com.
+
+					. 				root DNS Server		根服务器（返回顶级域名服务器位置）
+			com	net	org	cn	gov	...	Top Level Server	顶级域名服务器（返回授权服务器位置）
+			bilibili					Authoritative Server:bilibili.com	授权服务器（返回来源服务器位置）
+			www	mail	ftp	...			Resource Recaord:www.bilibili.com	来源服务器（返回网站服务位置）
+
+			dig +trace www.bilibili.com	(该命令+trace存疑)
+
+		DNS查询类型
+
+			递归查询
+
+			client 	----> 	当地DNS服务器 	<------->	"."
+					当地DNS服务器 	<------->	"net"
+					当地DNS服务器 	<------->	"bilibili.com"	
+			client	<----	当地DNS服务器						
+
+			循环查询 逐级返回  每次消耗大量缓存
+
+			client ----> 	当地DNS服务器 	------->	"."
+					"."	 	------->	"net"
+					"net"	 	------->	"bilibili.com"							
+					"net"	 	<-------	"bilibili.com"
+					"."	 	<-------	"net"
+					当地DNS服务器 	<-------	"."
+			client	<----	当地DNS服务器
+
+			实际应用中两者都会使用
+
+		资源记录
+		
+			在DNS上，信息通过一个叫资源里路的格式保存
+			
+			资源记录
+
+				- NAME		名字
+				- CLASS		通常是IN  （internet）
+				- TYPE	类型	A为IPV4地址	AAAA为IPV6地址	CNAME别名，名称对等 MX为邮件记录
+				- RDATA	信息内容
+
+			例：
+
+			NAME		CLASS	TYPE	RDATA
+
+			www		IN	A	192.168.1.1
+			mail		IN 	A	192.168.1.2	
+			server1		IN	CNAME	www
+					IN	MX 10	mail.bilibili.com
+			
+		资源记录类型
+	
+			DNS的资源记录可以记录很多类型的资源，不仅仅是IP地址，
+			常见的资源记录	
+			
+			A		IPV4地址
+			AAAA		IPV6地址
+			MX		邮件记录
+			CNAME		别名
+			PTR		指针（逆向解析）
+			SRV		服务资源
+
+		DNS服务器类型
+
+			Primary DNS Server (Master)
+			一个域的主服保存该域的zone配置文件，域内所有配置更改都在这里进行
+			Secondary DNS Server (Slave)
+			从主服务器抓取配置文件，作为主服务的冗余负载
+			Caching only Server
+			DNS服务器缓存服务不负责任和zone文件，仅仅依靠缓存为客户端提供服务，常用于负载均衡及加速访问使用
+	
+		ZONE
+			在DNS服中一个域用过一个zone文件保存该域信息
+
+			zone文件格式标准化配置如下：
+
+			STTL ID
+			@IN	SOA 	@rname.invalid.(
+						0	;serial		配置文件的修改次数
+						1D	;refresh	刷新时间 1D就是1DAY
+						1H	;retry		重试时间 1H即使1HOUR
+						1W	;expire		
+						3H)	;minimum
+				NS	@
+				MX 10	    mail.linuxcast.net		定义邮件服务
+			www	IN A 	192.168.1.100			定义站点服位置
+			mail	IN A	192.168.1.200			定义邮件服务位置
+
+		高级查询
+
+			dig -t mx qq.com
+			dig -x www.bilibili.com
+			dig -t soa bilibili.com
+
+
+第二节	BIND服务基础及域主服务器配置
+
+		BIND
+		现在使用的最广泛的DNS服务器软件BIND
+		最早为伯克利大学学生编写
+		现在最新为9
+		
+		BIND支持现今绝大多数OS
+	
+		BIND服务的名称为named
+
+		我们可以通过以下命令安装BIND
+
+			yum install -y bind bind-chroot bind-utils
+		
+		DNS默认使用UDP，TCP协议，默认使用端口53（domain），953（mdc）
+
+
+		BIND配置文件
+			
+			配置文件主要位置：
+			
+				/etc/named.conf	-BIND服务主配置文件
+			
+				/var/named/	-zone文件
+		
+			如果安装了bind-chroot，BIND会被封装到一个伪根目录，配置文件的位置变为：
+
+				/var/named/chroot/etc/named.conf
+
+				/var/named/chroot/var/named/	
+	
+			chroot是通过相关巍峨见封装在一个伪根目录内，已达到安全防护的目的，
+			一旦该程序被攻破，只能访问伪根目录的内容，而不是真实的根目录
+
+		BIND配置文件
+
+			在不同于其他服务，BIND在安装后不会有任何预制的配置文件，
+			但是在BIDN文档文件夹	（/usr/share/doc/bind-9.9.4）
+			BIND为我们提供了配置文件模板，可以直接拷贝过来：
+			
+				cp -rv /usr/share/doc/bind-9.9.4/sample/ect/*  /var/named/chroot/etc/
+				cp -rv /usr/share/doc/bind-9.9.4/sample/var/*  /var/named/chroot/var/
+
+			示例中的主配置文件内容较多，
+			实验环境下我们可以删减不需要的内容，配置named.conf
+			最小化配置如下：
+		
+				options{
+					listen-on port 53	{127.0.0.1;};
+					directory 		"/var/named";			
+				};
+			或者
+				options{
+					directory 		"/var/named";	
+					listen-on port 53	{127.0.0.1;};
+					listen-on-v6 port 53	{127.0.0.1;};		
+				};
+			
+			注：ubuntu中该代码在named.conf.options文件中
+			
+		域主服务器配置
+
+			一个域的主服务器是这个域的信息权威服务器，所有这个域的信息都是由域的主服务器控制，
+			配置一个域的主服务器需要一下几个步骤
+
+			1.在bind的主配置文件中添加该域的定义
+		
+			2.在/var/named/chroot/var/named中创建该域的zone信息
+
+			3.编辑zone文件，添加需要的信息
+
+			4.启动bind服务或使bind刷新配置
+
+			5.使用host或dig命令检测域信息是否正常				
+
+
+
+		配置域主服务器-1
+
+			在bind的主配置文件中添加域bilibili.com的定义
+
+			配置文件位置：
+
+				/var/named/chroot/etc/named.conf
+
+					options {
+					directory "/var/named"; 
+					listen-on port 53	{ 127.0.0.1; };
+					listen-on-v6 port 53	{ ::1; };
+					};
+	
+
+			在主配置文件中添加一行域的zone定义：（ubuntu中代码参考在named.conf.default-zones文件）
+
+				zone"bilibili.com"{
+					type master
+					file"bilibili.com.zone"		文件名可以随便，ubuntu中使用绝对路径形式（由于centos中上面的option已定义了查找目录）
+				};
+			
+		配置域主服务器-2
+
+			为定义的域添加zone配置文件
+
+			zone文件位置
+
+				/var/named/chroot/var/named/bilibili.com.zone
+
+			zone文件内容
+
+				zone文件内容比较复杂，手工输入很容易出错，所以一般使用默认的named.localhost配置文件作为模板
+
+					cp named.localhost bilibili.com.zone
+
+				添加一个资源记录（RR）
+
+					IN MX 10	mail.bilibili.com
+				www	IN A	192.168.1.111
+				mail	IN A	192.168.1.222
+
+
+				确保配置文件都有读权限
+
+		配置域主服务器-3
+
+			1.启动bind服务或刷新配置
+
+				service named start
+				service named reload
+	
+			2.将本机的DNS配置指向本机
+
+				/etc/resolv.conf	（debian系不能单纯修改该文件 需要修改网卡配置或者找到/etc/resolvconf/resolv.conf.d/base文件修改）
+				nameserver 127.0.0.1
+
+			3.使用命令host或dig验证DNS配置
+
+				host 	www.bilibili.com
+				dig 	www.bilibili.com	
+
+		错误排查
+		
+		DNS语法复杂晦涩，容易出错，bind提供了语法检查命令
+
+			命令named-checkconf 检查主配置文件
+		
+				named-checkconf /var/named/chroot/etc/named.conf
+				无返回 则无错误
+
+			命令named-checkzone 检查zone配置文件
+				
+				named-checkzone bilibili.com bilibili.com.zone
+				
+
+
+第三节	BIND服务从服务器与缓存服务器配置	
+			
+		域从服务器
+
+			一个域从服务器为了备份负载均衡使用，所有DNS信息由主服务器提供
+			配置如下
+
+			1.在bind的主配置文件爱你中添加该域的定义
+
+			2.启动bind服务或者bind刷新配置
+
+			3.查看域的zone文件是否正常抓到/var/named/slaves
+
+			4.使用host或者dig命令检测域信息是否正常
+
+		配置域从服务器-1
+		
+			在bind的主配置文件中添加从域bilibili.com的配置信息
+
+			配置文件位置
+
+				/var/named/chroot/etc/named.conf
+
+			在主配置文件中添加一行域的zone定义
+
+				zone"bilibili.com"{
+					type slave
+					masters{192.168.1.1;};
+					file"slaves/linuxcast.net.zone";
+				};
+		
+
+		配置域从服务器-2
+
+			1.重启bind服务或刷新配置
+
+				service named start
+				service named reload
+
+			2.查看zone文件是否正常抓取下来
+
+				vim /var/named/chroot/var/named/slaves/bilibili.com.zone
+
+			3.将本机的DNS指向自己
+
+				vim /etc/resolv.conf
+
+					nameserver 127.0.0.1
+
+			4.使用命令host或dig验证DNS配置
+
+				host	www.bilibili.com
+				dig	www.bilibili.com
+
+		
+		配置缓存服务器
+
+			一个DNS服务可以既不是主也不是从服务
+			接到DNS后缓存服务会递归查询解析，会将结果缓存
+			这样的服务称为CACHING NAME SERVER
+
+			通常在局域网中配置缓存是为了加速访问网络
+
+			也可为缓存服务配置一个上游DNS服务器地址，缓存服务器可以给客户提供一个上游DNS的地址
+
+				forwarders{218.0.0.1；} ；  （上游DNS服务器地址）
+
+			也可以通过以下选项让服务器转发所有dns到forwarders服务器：
+
+				forward only；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

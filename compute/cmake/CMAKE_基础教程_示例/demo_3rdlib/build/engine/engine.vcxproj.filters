@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\engine\CMakeFiles\engine.dir\cmake_pch.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\engine\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\engine\CMakeFiles\engine.dir\Debug\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\engine\CMakeFiles\engine.dir\Release\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\engine\CMakeFiles\engine.dir\MinSizeRel\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\engine\CMakeFiles\engine.dir\RelWithDebInfo\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\engine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Precompile Header File">
+      <UniqueIdentifier>{A4BF9BFF-C268-32EA-9E19-6EF2F16297F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9BE3EBCA-A7E9-3835-B9BD-84E038A7AE63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

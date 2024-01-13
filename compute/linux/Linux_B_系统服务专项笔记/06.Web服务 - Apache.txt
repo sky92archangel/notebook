@@ -1,0 +1,279 @@
+第一节	WEB服务原理 HTTP协议
+
+	
+	web服务概述
+
+		日常使用最多的服务都是web
+		各种浏览器都是WEB客户端
+		而web服务端是我们方位网站WEB服务
+		常见的WEB服务有IIS APACHE NGINX LIGHTTPD等 各有优缺点
+
+	HTTP协议
+
+		web服务端和客户端之间通过HTTP协议传输数据
+
+		当前使用做多的HTTP版本是HTTP/1.1
+
+		http://www.bilibili.com    	------->	www.bilibili.com
+					   	<------		web服务器
+		web浏览器	port:>1024	HTTP		nginx	port:80
+
+		HTTP使用tcp协议，默认端口号为80
+
+	HTTP方法
+	
+		定义了很多方法让客户端和服务器交互
+
+		-GET	从服务器上获取一个资源（网页 视频音频）
+		-POST	想服务器提交数据（可能会创建一个新的资源）
+		-PUT	想服务器提交数据
+		-DELETE	删除指定资源
+		-HEAD	只请求网络头部
+
+	HTTP状态码
+
+		HTTP通过状态码来标识返回信息
+
+		-200	正常，请求成功
+		-301	永久移动，一般用于域名重定向
+		-304	未修改，一般用于缓存
+		-401	禁止访问，未授权
+		-403	禁止访问，通常代表已经认证通过，但没有访问权限
+		-404	未找到资源
+		-500	服务器内部错误
+	
+	HTML语言
+	
+		HTML是对大多数网页使用的语言，几乎所有的网页都是以HTML作为源代码
+		通过浏览器解释呈现
+
+		HTML拥有固定语法，用来储存网页数据，定义不同元素
+		现代网页通过CSS语言来储存网页的表现样式
+
+		现代最流网页实际架构
+		
+			内容储存： 	HTML
+			网页架构：	div
+			网页样式：	CSS	
+
+		我们可以通过网页上查看源代码
+
+		HTML形式的页面我们称之为静态页面
+
+	动态页面
+
+		HTML格式的网页文件只能提供静态内容
+		但是我们往往需要针对不同用户提供不同的网页内容
+
+		动态语言编写程序
+		在用户访问的时候给予不同的条件生成不同的HTML代码给用户
+
+		现代几乎左右的网站均使用动态语言技术
+
+		常见有 ASP asp.net jsp php
+
+		新型的python和ruby on rails
+
+	web服务架构
+
+		由于有静态和动态页面之分，现代web服务架构分为web服务器和应用服务器
+
+		严格意义上web服务器只通过HTTP协议向外提供HTML，CSS等网页资源
+
+		而动态语言需要专门的服务器进行计算，因为动态与阿燕是需要进行计算处理后产生HTML代码的
+
+		http://www.bilibili.com		 -------->	www.bilibili.com	
+						<---------	web服务器	应用服务器
+		web浏览器			HTTP		nginx		PASSENGER
+
+	加入数据库
+
+		对于静态网页，数据直接与HTML保存一起，而对于对哦奶太语言来说
+		数据统一保存在数据库，需要的时候按照程序动态生成，所以以讹完整的web架构如下
+
+		
+		web浏览器  ------> web服务器 --> 应用服务器 --> 数据库
+			  <------  nginx	passenger	mysql		
+
+第二节	APACHE服务器基本配置
+
+	
+	生产环境汇总使用的web服务 老牌IIS APACHE 新的nginx lighttpd
+
+	apache是最为老牌的服务器
+
+	几乎所有linux的发行版本都支持APACHE
+
+		动态，预创建进程
+		动态模块加载
+		虚拟主机
+		SSL主机
+
+	CentOS6默认自带APACHE2.2
+
+	安装APACHE
+
+		通过
+		yum install -y httpd
+
+		安装后启动
+		service httpd start
+
+		默认用80HTTP和443HTTPS
+		
+		apache的配置文件在
+		/etc/httpd/conf/httpd.conf
+
+		模块配置文件
+		/ect/httpd/conf.d
+
+		默认网站日志为
+		/var/log/httpd	
+
+	网页服务器
+
+		默认APACHE不需配置就可启动
+		默认保存网站目录/var/www/htmls
+	
+		我们可以直接访问apache服务器的地址
+		可看到apache服务器测试页面
+		
+		我们可以将对外发布的网页存到/var/www/htmls
+
+		之后只用浏览器访问
+
+
+	apache配置
+
+		主配置文件/etc/httpd/conf/httpd.conf中
+
+		keepalive off		启停TCP保活功能 保持TCP连接不立即拆除
+		keepalivetimeout 15	TCP保活时间15s
+		MAXkeepaliverequests 10	对一个连接的请求上限为10
+		listen 80		监听端口 也可限定为：	IP：端口号
+		loadmodule 名字 路径	模块加载
+		user apache		默认以apache用户运行
+		group apache		默认以apache组运行
+		serveradmin 管理员邮箱	网站管理员邮箱
+		documentroot"路径"	默认网站网页路径
+		<Directory"路径">	路径块开始
+		</Directory>		路径块结束
+		DirectoryIndex		默认首页名称 优先级从左到右
+		servername		域名
+
+	语法检查
+
+		service httpd configtest
+		apachectl configtest	
+		http -t
+	
+	日志	网站统计
+		
+		/var/log/httpd/
+		access.log   	error.log
+	
+第三节	apache服务认证
+
+	简单用户认证
+
+		我们可以配置apache为特定文件夹进行简单的HTTP用户认证
+
+	我们通过以下步骤实现
+
+		创建apache密码文件
+			htpasswd -cm /etc/httpd/.htpasswd linuxcast
+			htpasswd -m /etc/httpd/.htpasswd nash_su
+
+		修改apache主配置文件，为特定目录配置认证
+			<Directory /var/www/html>
+				AuthName"LinuxCast Auth"
+				AuthType basic
+				AuthUserFile /etc/httpd/.htpasswd
+				Require valid-user
+			</Directory>
+	打开浏览器
+
+第四节	apache虚拟主机
+
+	默认apache的配置只提供了一个网站服务
+	但是我们可以配置一台apahce服务器为对各网站提供服务器，就是虚拟主机
+
+	虚拟主机分为两种：
+
+		-基于IP的虚拟主机
+		apache服务通过不同的访问IP区分不同的虚拟主机
+
+		-基于域名的虚拟主机
+		apahce服务器通过不同的访问域名区分不同的虚拟主机
+
+	一般使用基于域名的虚拟主机，但是如果需要搭建ssl的虚拟主机，则必须基于IP
+	
+	因为一般的网站往往不需要一个独立服务器的硬件资源
+	使用虚拟主机技术在以恶搞服务器上运行多个网站可以大大节省成本
+
+	基于域名的虚拟主机
+
+		确保DNS服务器将不同域名解析到同一个IP上
+
+			www1.linuxcast.net	
+			www2.linuxcast.net	192.168.1.10
+
+		在apache配置文件中添加配置：
+
+			NameVirtualHost *.80
+	
+			<VirtualHost *.80>
+				ServerName www1.linuxcast,net
+				ServerAdmin root1@linuxcast.net
+				DocumentRoot /var/www/linuxcast-1
+			</VirtualHost>
+			
+			<VirtualHost *.80>
+				ServerName www2.linuxcast,net
+				ServerAdmin root2@linuxcast.net
+				DocumentRoot /var/www/linuxcast-2
+			</VirtualHost>		
+		
+		确保apahce用户对网页根目录具有访问权限
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

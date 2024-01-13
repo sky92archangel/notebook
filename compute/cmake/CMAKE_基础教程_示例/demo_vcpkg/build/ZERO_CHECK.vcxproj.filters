@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_vcpkg\build\CMakeFiles\9d2dc8bc031b3b82150318a796757775\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{3ACB3B84-235F-35B5-83C2-B83F98D8A21B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

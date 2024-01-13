@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="R:\NOTE\linux-notebook\CMake_专项笔记\CMAKE_基础教程_示例\demo_3rdlib\build\CMakeFiles\de81de8a169439fee355702208a18fdf\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4438FB0A-FDF3-30C1-B7AC-E3EBA259961B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

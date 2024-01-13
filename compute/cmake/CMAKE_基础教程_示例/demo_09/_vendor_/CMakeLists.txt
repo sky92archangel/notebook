@@ -1,0 +1,5 @@
+# add_subdirectory(glfw)
+add_subdirectory(tomlplusplus)
+add_subdirectory(eigen)
+add_subdirectory(spdlog)
+add_subdirectory(opencv)

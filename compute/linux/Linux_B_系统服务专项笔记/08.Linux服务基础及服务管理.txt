@@ -1,0 +1,122 @@
+第一节 	Linux服务基础及服务管理
+
+
+	服务是运行在操作系统后台的一个或多个程序，为用户或者提供特定服务
+
+	服务不中断
+
+		
+	服务器配置最多的是网络服务
+
+	常见网络服务
+		mail	ftp	smb	http
+		网游
+		域名服务NDS
+
+	system V
+
+		five	是早期的操作系统
+		LINUX的服务管理体系就是沿用这个管理体系
+
+		system V定义了运行级别
+
+		-0	关机
+		-3	多用户模式
+		-5	图形化
+		-6	重启
+
+		每个级别下都有对应启动和不启动的服务
+
+		systemV定义init为系统启动的第一个进程PID为1
+		init查看/etc/inittab汇总的默认运行级别启动对应服务
+	
+	systemV script
+		
+		SYSTEMV 启动管理脚本
+
+		可以编写脚本来手工创建一个由SYS V控制的服务，也可以通过自定义命令进行管理，不过使用SYSV更加标准统一
+
+		service用来调用这些脚本
+		
+			脚本的位置在/etc/rc.d/init.d目录下
+
+			service 服务名	[start|stop|restart|status]
+
+		不同运行级别的启动/etc/rc.d/目录下 rc1.d rc2.d rc3.d rc4.d rc5.d rc6.d
+
+		进入rc1.d查看   都是链接文件	
+		文件名为：S+01～99+服务名，K+01～99+服务名
+		S为开机启动		K为开机不启动（kill）
+		01～99为启动顺序   01为第一个启动  02为第二个启动  需要严格控制
+
+	chkconfig
+		
+		chkconfig可以实际控制开机启动
+		chkconfig 服务名 [on|off]
+		
+		例如：
+			chkconfig cups on
+			chkconfig cups off
+			chkconfig --list	查看所有开机启动
+
+	xinetd
+	
+		xinetd是第二套服务控制体系
+		控制不常驻功能简单的服务
+		
+		xinetd自身或作为一个服务常驻后台
+		而xinetd控制的服务是没有连接需求是不运行
+		xinetd控制的服务请求都由xinetd来代理
+
+		xinetd收到请求后启动
+		
+		常见xinetd服务
+			telnet	tftp	rsync
+	
+		安装
+			yum install xinetd
+
+		xinetd控制的服务启停还是用chkconfig控制
+	
+		xinetd的配置文件/etc/xinetd.conf
+		
+		xinetd控制的服务的配置文件保存在/etc/xinetd.d/下与服务同名的文件中
+
+		例如：
+
+			service tftp
+			{
+				。。。
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

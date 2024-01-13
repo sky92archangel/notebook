@@ -1,0 +1,163 @@
+第一节
+	
+	NFS是类UNIX系统之间使用广泛的文件共享协议，不同于ftp和http，NFS不需要下载后使用
+	直接可以使用而不需要下载
+		
+	NFS服务将某个文件夹共享出来，客户端就可以直接通过网络挂载该共享文件夹
+	挂载后直接使用，无需下载
+
+	NFS效率比FTP和HTTP高，但常用于局域网
+
+	三个主流版本：NFSV2 NFSV3 NFSV4
+
+	NFS协议
+		
+		NFSV2和NFSV3默认需要使用rpc服务
+		所以rpc服务必须开启
+		
+			service rpcbind start
+			chkconfig rpcbind on		开机自启动
+
+		NFSV4无需rpc支持，且防火墙效率
+
+		NFSV2和NFSV3使用TCP和UDP传输，UDP效率高但不可靠
+		NFSV4用TCP协议
+
+		NFS服务默认安装
+
+			service nfs start
+			chkconfig nfs on
+
+	NFS，防火墙
+
+		默认NFS使用五个端口，其中四个是动态，及rpc服务端口，动态端口无法通过防火墙
+		如果需要通过防火墙，则需要配置NFS使用指定静态端口
+
+		配置NFS的配置文件/etc/sysconfig/nfs，添加静态端口设置
+	
+			MOUNT_PORT="4001"	-挂载使用端口
+			STATD_PORT="4002"	-状态使用端口
+			LOCKD_TCPPORT="4003"	-TCP锁使用端口
+			LOCKE_UDPPORT="4004"	-UDP锁使用端口
+			
+		防火墙需要配置允许以上端口，以及NFS协议的2049端口，RPC的111端口允许通过
+		才能正常使用NFS
+
+	NFS共享
+
+		NFS服务的共享配置文件为/etc/exports
+
+		每个共享占用一行
+
+			共享目录 	允许的客户主机（选项）
+
+			如：
+
+			共享目录(绝对) 	允许的客户主机（选项）
+
+			/linuxcast-nfs	192.168.1.0/24（ro,async）
+			/linuxcast-nfs	10.1.1.1（rw,sync）
+			/linuxcast-nfs	*.linuxcast.net
+			
+		配置好共享后，可以使用命令启用
+
+			service nfs start
+		或	exportfs -r
+	
+			exportfs -v	查看共享是否生效
+		
+	客户端挂载NFS共享
+
+		可以通过mount命令挂载NFS共享
+					
+			mount -t nfs 192.168.1.100:/linuxcast-net /mnt
+					NFS服务器	共享路径
+
+		也可以将配置写入/etc/fstab中，在启动时自动挂载：
+		
+		192.168.1.100:linuxcast-nfs 	/mnt	nfs	defaults 0 0
+
+		挂载时可以使用-o指定挂载选项，常用选项如下：
+
+			- ro		只读挂载
+			- rw		读写挂载
+			- vers=4	指定使用NFSv4方式挂载
+
+	NFS共享选项
+
+		默认选项如下：
+
+			- or		只读共享
+			- sync		所有操作返回前必须已经写入磁盘
+			- wdelay	延迟写操作，等待更多的写操作一起执行
+			- root_squash	防止远程root用户使用root全乡对共享进行访问
+
+		常用：
+
+			- rw		读写共享
+			- async		操作可以延迟写入磁盘，立即响应，可提高速度
+			- no_wdelay	关闭写延迟，需要与sync选项同时使用
+			- no_root_squash关闭root_squash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

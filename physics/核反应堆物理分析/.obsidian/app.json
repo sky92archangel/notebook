@@ -1,0 +1,8 @@
+{
+  "newLinkFormat": "relative",
+  "trashOption": "local",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "note",
+  "attachmentFolderPath": "./attachment",
+  "alwaysUpdateLinks": true
+}

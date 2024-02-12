@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "a8c57ce34a9a8a70",
+    "type": "split",
+    "children": [
+      {
+        "id": "12477c849ac14e9e",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "01_核物理基础.md",
+            "mode": "source"
+          }
+        },
+        "group": "d38e7d1fa1c96ff7"
+      },
+      {
+        "id": "1c5ee8fd422af71f",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "01_核物理基础.md",
+            "mode": "preview"
+          }
+        },
+        "group": "d38e7d1fa1c96ff7"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9944ba235a2e0ca2",
+    "type": "split",
+    "children": [
+      {
+        "id": "20fb303148820e88",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "786c57fbbb2847fe",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "3eaae811f980f001",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9fd200fe90deb36d",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 303
+  },
+  "right": {
+    "id": "182492c3558e7983",
+    "type": "split",
+    "children": [
+      {
+        "id": "75c9060d4e37c414",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "666b5901ba2021ca",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01_核物理基础.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e9a301e3e9c37afe",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01_核物理基础.md"
+              }
+            }
+          },
+          {
+            "id": "43a9dfa286d29baa",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2c4707f86a61d31d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "01_核物理基础.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "1c5ee8fd422af71f",
+  "lastOpenFiles": [
+    "01_核物理基础.md",
+    "绪论.md",
+    "02_中子学过程.md",
+    "中子学过程.md",
+    "第一节.md",
+    "未命名.md"
+  ]
+}

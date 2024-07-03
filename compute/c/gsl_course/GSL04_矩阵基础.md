@@ -199,7 +199,7 @@ int matrix_mat2vec_test()
 #include <gsl/gsl_matrix.h>
  
 int matrix_calc_test()
-{
+{   
     gsl_matrix *m = gsl_matrix_alloc(5, 5);
     gsl_matrix *n = gsl_matrix_alloc(5, 5);
     gsl_vector *v = gsl_vector_alloc(5);

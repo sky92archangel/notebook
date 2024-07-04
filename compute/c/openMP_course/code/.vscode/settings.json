@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "pthread_test_lock.h": "c",
+        "stdio.h": "c",
+        "omp.h": "c",
+        "openmp_test_section.h": "c"
+    }
+}

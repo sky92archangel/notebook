@@ -1,4 +1,4 @@
-# C用pthread加速自己的c语言程序
+# 用pthread加速自己的c语言程序
 
 [TOC]
 

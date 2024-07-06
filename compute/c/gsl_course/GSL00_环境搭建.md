@@ -4,6 +4,12 @@
 
 sky92@sky92:~/workspace/gsl_course/code01$  
 
+## 简述
+
+GSL是纯C语言科学计算库，遵顼BLAS/LAPACK约定，用于只有纯C环境或极端性能要求；
+
+若用户是C++环境则建议直接采用Eigen，其为头文件库无需安装，更加便捷； 
+
 ## LINUX环境
 
 环境部署在远程linux服务器，由本地vscode链接
@@ -91,16 +97,46 @@ sky92@sky92:~/workspace/gsl_course/code01$ make
 sky92@sky92:~/workspace/gsl_course/code01$ ./gslstudy
 ```
 
-报错提示，若出现该错误需要添加环境变量
+## 报错提示
+
+若出现该错误需要添加环境变量
 
 ```SHELL
 ./gslstudy: error while loading shared libraries: libgsl.so.28: cannot open shared object file: No such file or directory
 ```
 
-添加环境变量
+添加环境变量，当然这是临时操作，系统重启后会失效
 
 ```SHELL
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/sky92/workspace/clib/GSL/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/sky92/workspace/clib/GSL/bin
 ```
+
+如果需要永久添加环境变量，需要写`.bashrc`或`.profile`文件
+
+```shell
+sky92@sky92:~$ nano ~/.bashrc
+sky92@sky92:~$ nano ~/.profile
+sky92@sky92:~$ nano ~/.zshrc	#zsh用户
+```
+
+在配置文件的末尾添加环境变量的定义 
+
+```shell
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/sky92/workspace/clib/GSL/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/sky92/workspace/clib/GSL/bin
+```
+
+更新配置操作生效
+
+```shell
+sky92@sky92:~$ source ~/.bashrc
+sky92@sky92:~$ source ~/.zshrc		#zsh用户
+#验证
+sky92@sky92:~$ echo $LD_LIBRARY_PATH
+```
+
+
+
+
 

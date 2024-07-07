@@ -1,3 +1,0 @@
-C:\_PRO_\cmake\bin\cmake.exe -E rm -f CMakeFiles\exe.out.dir/objects.a
-C:\MinGW\mingw64\bin\ar.exe qc CMakeFiles\exe.out.dir/objects.a @CMakeFiles\exe.out.dir\objects1.rsp
-C:\MinGW\mingw64\bin\c++.exe -Wl,--whole-archive CMakeFiles\exe.out.dir/objects.a -Wl,--no-whole-archive -o exe.out.exe -Wl,--out-implib,libexe.out.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\exe.out.dir\linkLibs.rsp

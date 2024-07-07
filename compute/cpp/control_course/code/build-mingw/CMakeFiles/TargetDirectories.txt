@@ -1,3 +1,0 @@
-R:/_NOTE_/compute/cpp/control_course/LinearRegression/build-mingw/CMakeFiles/exe.out.dir
-R:/_NOTE_/compute/cpp/control_course/LinearRegression/build-mingw/CMakeFiles/edit_cache.dir
-R:/_NOTE_/compute/cpp/control_course/LinearRegression/build-mingw/CMakeFiles/rebuild_cache.dir

@@ -1,3 +1,0 @@
-R:/_NOTE_/compute/cpp/control_course/线性回归/build/CMakeFiles/exe.out.dir
-R:/_NOTE_/compute/cpp/control_course/线性回归/build/CMakeFiles/ALL_BUILD.dir
-R:/_NOTE_/compute/cpp/control_course/线性回归/build/CMakeFiles/ZERO_CHECK.dir

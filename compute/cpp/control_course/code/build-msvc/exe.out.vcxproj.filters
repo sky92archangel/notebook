@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="R:\_NOTE_\compute\cpp\control_course\线性回归\LinearRegression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="R:\_NOTE_\compute\cpp\control_course\线性回归\LinearRegressionExe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="R:\_NOTE_\compute\cpp\control_course\线性回归\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{855C3F35-5E26-3157-BC1A-9D3341B59A52}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

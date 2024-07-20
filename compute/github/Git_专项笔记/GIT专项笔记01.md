@@ -655,7 +655,66 @@ git push --tags --force
 git cat-file -s 2018138e1385c1e8c1e384c1e8331e87
 ```
 
-## 第十一课 疑难问题
+
+
+## 第十一课 引入外部项目
+
+### 1.git子项目
+
+一般从github上下载的大型项目多数会引用其他项目的git库作为子模块
+那么想要把子模块递归的拉到本地就需要采用git submodule功能
+
+```shell
+# 直接源码编译
+git submodule add git@gitee.com:roberchen/spdlog.git
+git submodule init
+git submodule update --init --recursive
+# 移除子模块
+git submodule deinit -f path/to/submodule
+git rm-f path/to/submodulerm -rf .git/modules/path/to/submodule
+```
+
+### 2.外部项目引入
+
+```cmake
+#在编译时下载项目并引入到主项目中
+include(ExternalProject)
+ExternalProject_Add(SPDLOG
+    PREFIX	 			${SPDLOG_ROOT}
+    GIT REPOSITORY	 	${SPDLOG_GIT_URL}
+    GIT_TAG    			${SPDLOG_GIT_TAG}
+    CONFIGUR_COMMAND 	$SPDLOG_CONFIGURE}
+   	BUILD_COMMAND	 	${SPDLOG_MAKE}   
+    INSTALL_COMMAND		${SPDLOG_INSTALL}
+ )
+```
+
+
+
+### 3.直接从线上拉下来编译
+
+```cmake
+cmake_minimum required(VERSION 3.16)
+project(gtest_test)
+set(CMAK_CXX_STANDARD 17)
+include(FetchContent)
+FetchContent Declare(
+    googletest
+    GIT REPOSITORY https://github.com/google/googletest.git
+    GIT TAG 1.14.0
+)
+FetchContent_MakeAvailable(googletest)
+add exedtable(gtest_test gtest_test.cpp)
+target_link_libraries(gtest_test gtest_main)
+```
+
+
+
+
+
+
+
+## 附录 疑难问题
 
 
 

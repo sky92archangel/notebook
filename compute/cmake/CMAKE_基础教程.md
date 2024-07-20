@@ -165,7 +165,7 @@ endif
 
 
 
-### 0.指定编译器和参数
+### 1.指定编译器和参数
 
 ```cmake
 #指定最低版本号
@@ -179,6 +179,15 @@ set (CMAKE_C_COMPILER "/path_to_gcc/gcc")
 set (CMAKE_CXX_COMPILER "/path_to_gpp/g++")
 #如不指定则使用系统默认编译器
 
+#########设置编译模式######### 
+set(CMAKE_BUILD_TYPE Debug)
+# Debug:包含调试信息，不进行优化 
+# Release:不包含调试信息，进行优化 
+# RelWithDeblnfo:包含调试信息，并进行优化 
+# MinSizeRel:尽可能减小生成文件的大小
+# 也可以命令时决定 cmake-S.-B build -DCMAKE_BUILD_TYPE=Debug
+
+
 #########添加编译参数#########
 #设置编译选项（配置编译器）有如下三种方法
 #ADD_COMPILE_OPTIONS方法会递归引用到整个项目中 针对所有编译器
@@ -189,7 +198,152 @@ ADD_DEFINITIONS(-std=c++11 -Wall -Werror -Wstrict-prototypes -Wmissing-prototype
 SET(CMAKE_C_FLAGS  -Wall -Werror -Wstrict-prototypes -Wmissing-prototypes)
 ```
 
-  
+
+
+### 2.find_package用法
+
+```cmake
+#一般这样引用 LZ4压缩算法 
+find_package(LZ4 ) 
+# REQUIRED 指找不到就报错
+find_package(LZ4 REQUIRED)
+# 如果只需要XXX组件
+find_package(LZ4 COMPONENTS xxx)
+# 直接给出路径
+find_package(PackageName [PATHS path1 [path2 ... ]])
+
+# 除了直接指定路径外，其他方法都需要将这个库加入CMAKE的查询路径中 cmake默认查找位置为根目录的//.../cmake/module/Findxxx.cmake
+# 那么有两种方法解决这个问题
+# 1 在cmake的module增加一个findxxx.cmake 文件
+# 2 在当前项目下新建cmake文件夹，在其目录下新增findxxx.cmake文件
+
+#######如果想opengl这种常用系统都具有的库直接link即可
+find_package(OpenGL REQUIRED)
+target_link_libraries(main OpenGL::GL)
+```
+
+代码示例
+
+```cmake
+set(CMAKE_CXX_STANDARD 11)
+add_executable(lz4_exe lz4.cpp)
+#cmake default search path for external libraries
+#set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+find_package(LZ4 REQUIRED) 
+# //cmake/module/Findxxx.cmake
+if(LZ4_FOUND)
+    target_include_directories(lz4 exe PRIVATE ${LZ4_INCLUDE_DIR})
+    target_link_libraries(lz4_exe PRIVATE ${LZ4_LIBRARY})
+else()
+    message(FATAL_ERROR "LZ4 library not found.")
+endif()
+```
+
+上述示例中，有用户无法找到LZ4包
+
+因为需要将这个库加入CMAKE的查询路径中 cmake默认查找位置为根目录的//.../cmake/module/Findxxx.cmake
+那么有两种方法解决这个问题:
+1 在cmake的module增加一个findxxx.cmake 文件
+2 在当前项目下新建cmake文件夹，在其目录下新增findxxx.cmake文件，当然这样的话需要在CMakeLists.txt中增加一行
+
+```cmake
+# CMAKE_MODULE_PATH 为cmake第三方库路径
+# CMAKE_CURRENT_SOURCE_DIR为当前CMakeLists.txt所在文件路径
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+```
+
+
+
+下面是.cmake的写法
+
+FindLz4.cmake
+
+```cmake
+#查询头文件
+find_path(LZ4_INCLUDE_DIR Lz4.h /path_to_lz4/include ${CMAKE_SOURCE_DIR}/ModulesMode
+#查询动态库
+find_library(LZ4_LIBRARY NAMES LZ4 PATHS /path_to_lz4/lib ${CMAKE_SOURCE_DIR}/Modules
+message(STATUS "enter cmake directory!")
+
+if(LZ4_INCLUDE_DIR AND LZ4_LIBRARY)
+    set(LZ4_FOUND TRUE)
+endif(LZ4_INCLUDE_DIR AND LZ4_LIBRARY)
+```
+
+
+
+### 3.引用vcpkg管理的库
+
+```shell
+#直接定位vcpkg的cmake文件
+cmake -B [build directory]-S . -DCMAKE_TOOLCHAIN_FILE=[path to vcpkg]/scripts/buildsystems/vcpkg.cmake
+#或者直接将 这个路径 path to vcpkg]/scripts/buildsystems/vcpkg.cmake 加入到系统路径
+#  CMAKE_TOOLCHAIN_FILE   vcpkg]/scripts/buildsystems/vcpkg.cmake
+#同时推荐指定 VCPKG_DEFAULT_TRIPLET 为 x64-windows  为安装时默认版本
+#  VCPKG_DEFAULT_TRIPLET    x64-windows 
+```
+
+
+
+### 4.搭配vcpkg的manifest模式自动配置
+
+该配置采用config模式
+
+vcpkg.json
+
+```json
+{
+    "name": "opengl",
+    "version":"0.0.1",
+    "description":"learn the OpenGL",
+    "dependencies":[
+            "eigen3",
+            "imgui",
+            "glfw3",
+            "glm",
+            "glad",
+            "assimp"
+        ]
+}
+```
+
+CMakeLists.txt
+
+```cmake
+find_package(imgui CONFIG REQUIRED )
+target_link_libraries(main PRIVATE imgui::imgui)
+```
+
+
+
+### 5.闭源库或已编译库
+
+```CMAKE
+# IMPORTED
+# 采用已经编译的 glfw 库为例
+
+cmake_minimum_required(VERSION 3.20)
+project(tryIMPORTED)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REOUIRED ON)
+
+add_executable(main main.cpp)
+
+add_library(glfw STATIC IMPORTED)
+set_property(TARGET glfw PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/extern/glfw/lib-vc2019/glfw3.lib)
+#已编译库必须采用INTERFACE
+target_include_directories(glfw INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/extern/glfw/include)
+
+target_link_libraries(main glfw)
+
+```
+
+
+
+
+
+## 三、示例
 
 ### 1.单文件单文件demo1
 
@@ -281,7 +435,7 @@ PROJECT(demo3)
 #添加程序的子目录 即考虑子目录下的CMakeLists.txt  若加EXCLUDE_FROM_ALL则为编译过程忽略该目录
 ADD_SUBDIRECTORY(./mylib)
 
-# 查找当前目录下的所有源文件
+# 查找当前目录下的所有源文件 但只能找一层 无法嵌套寻找
 # 并将名称保存到 DIR_SRCS 变量
 AUX_SOURCE_DIRECTORY(./ DIR_SRCS) 
 
@@ -683,7 +837,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/include/udp/udp_interface.h DESTINATION ${
 
 
 
-## 三、CMAKE命令
+## 四、CMAKE命令
 
 ### 1.cmake基础命令
 
@@ -711,7 +865,7 @@ cmake --build build/
 
  
 
-### 1.cmake命令行指定编译器
+### 2.cmake命令行指定编译器
 
 ```shell
 #可以直接输入，可以看到当前版本支持的编译器
@@ -791,7 +945,24 @@ cmake -S . -B build -G "MinGW Makefiles"
 
  
 
-## 四、cmake配置文件
+### 3.指定编译模式
+
+```shell
+cmake-S.-B build -DCMAKE_BUILD_TYPE=Debug
+
+# cmake内部也可以设置编译模式 
+set(CMAKE_BUILD_TYPE Debug)
+# Debug:包含调试信息，不进行优化 
+# Release:不包含调试信息，进行优化 
+# RelWithDeblnfo:包含调试信息，并进行优化 
+# MinSizeRel:尽可能减小生成文件的大小
+```
+
+
+
+
+
+## 五、cmake配置文件
 
 当需要引入cmake脚本模块配置的时候
 

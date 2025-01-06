@@ -264,17 +264,121 @@ $ dotnet new gitignore
 
 
 
+## 部署
+
+### ASP-NET linux部署
+
+VS工程方面，进入工程目录，执行生成
+
+```shell
+$  dotnet  publish --configuration Release --runtime linux-x64
+```
 
 
 
+#### linux内安装环境
 
+```shell
+$ wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+#ubuntu 22.04 视linux版本决定
+$ sudo dpkg -i packages-microsoft-prod.deb
+$ rm packages-microsoft-prod.deb
+```
 
+安装net sdk或runtime
 
+```shell
+#sdk
+$ sudo apt-get update
+$ sudo apt-get install -y dotnet-sdk-6.0
+#runtime
+$ sudo apt-get install -y aspnetcore-runtime-6.0
+```
 
+转到webapi的发布文件目录，并启动
 
+```shell
+#进入
+$ cd /var/www/mywebapi
+$ sudo chmod 755 * 
+#启动
+$ dotnet mywebapi.dll
+```
 
+注意如果非本机访问，需要对监听地址指定，如果要完全开放地址，可以在启动应用程序之前设置环境变量，如下
 
+```shell
+$ set ASPNETCORE_URLS=http://0.0.0.0:5000
+```
 
+这样外部访问就不会refuse了
+
+#### 系统服务
+
+为了使Web API能够在后台运行并自动重启，可以将其创建为系统服务
+
+```shell
+$ sudo nano /etc/systemd/system/mywebapi.service
+```
+
+```ini
+[Unit]
+Description=My Web API Service
+
+[Service]
+WorkingDirectory=/var/www/mywebapi
+ExecStart=/usr/bin/dotnet /var/www/mywebapi/mywebapi.dll
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=mywebapi
+User=$USER
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```shell
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable mywebapi.service
+$ sudo systemctl start mywebapi
+```
+
+#### Nginx反向代理
+
+如果需要通过HTTP访问Web API，可以安装Nginx作为反向代理服务器
+
+```shell
+$ sudo apt update
+$ sudo apt install nginx
+```
+
+配置Nginx
+
+```shell
+$ sudo nano /etc/nginx/sites-available/default
+```
+
+在`server`块中添加以下配置
+
+```json
+location / {
+    proxy_pass http://localhost:5000; # 假设Web API运行在5000端口
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection keep-alive;
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+}
+```
+
+重启Nginx
+
+```shell
+$ sudo systemctl restart nginx
+```
 
 
 

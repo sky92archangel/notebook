@@ -20,7 +20,22 @@ cd  my_react_app
 npm start
 ```
 
+###  另
+
+npm 地址切换
+
+```shell
+#查看地址
+npm config get registry
+#设定地址
+npm config set registry http://registry.npm.taobao.org/
+#回复默认
+npm config delete registry
+```
+
  
+
+
 
 ## 核心语法
 

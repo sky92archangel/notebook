@@ -461,6 +461,76 @@ export default function HookUseCallback() {
 
 
 
+## 后端通讯
+
+安装axios，采用axios通讯
+
+```shell
+npm install axios --save
+```
+
+启动后端，保证后端网址可访问；
+
+创建组件AxiosTest.tsx
+
+```typescript
+// ClientButton.js 将环境设置为客户端
+'use client';
+
+import React from 'react';
+import axios from 'axios'; //引用axios
+
+const AxiosTest: React.FC = () => {
+    const handleSubmit = () => {
+        // 使用axios向后端发送请求
+        axios.post('http://localhost:5000/api/PostTest', {
+            key: 'value'
+        })
+            .then(response => console.log(response.data)) // 处理响应
+            .catch(error => console.error('Error:', error)); // 处理错误
+ 
+        // 使用axios发送GET请求
+        axios.get('http://localhost:5000/api/GetTest')
+            .then(response => { console.log(response.data); })   // 处理响应
+            .catch(error => {  console.error('Error:', error); // 处理错误
+            }); 
+    }; 
+    
+    return (
+        <div>
+            {/* 创建按钮组件，并为其添加事件处理函数 */}
+            <button onClick={handleSubmit}> Click </button>
+        </div>
+    );
+
+};
+ 
+export default AxiosTest
+```
+
+主页面使用该组件
+
+```typescript
+import AxiosTest from "./components/AxiosTest";
+
+export default function Home() { 
+  return (
+    <div>  
+      <AntdTest/>
+    </div> 
+  );
+}
+
+```
+
+
+
+
+
+
+
+
+
 
 
 

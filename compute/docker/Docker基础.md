@@ -66,7 +66,120 @@ sky92@sky92:~$ sudo systemctl daemon-reload
 sky92@sky92:~$ sudo systemctl restart docker
 ```
 
- 
+##  安装2025更新
+
+在 Ubuntu 22.04 上安装 Docker 时，如果遇到“没有可用的软件包 docker-ce”的错误，可能是由于软件源配置不正确或网络问题导致无法访问 Docker 的官方仓库。以下是解决此问题的详细步骤：
+
+### **解决步骤**
+
+#### **1. 更新系统包**
+
+确保系统包是最新的：
+
+bash复制
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+#### **2. 安装必要的依赖包**
+
+安装一些必要的包，这些包用于允许 `apt` 通过 HTTPS 使用仓库：
+
+bash复制
+
+```bash
+sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
+```
+
+#### **3. 添加 Docker 的官方 GPG 密钥**
+
+运行以下命令来添加 Docker 的官方 GPG 密钥：
+
+bash复制
+
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+
+#### **4. 添加 Docker 的 APT 仓库**
+
+将 Docker 的 APT 仓库添加到系统中：
+
+bash复制
+
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+#### **5. 更新 APT 包索引**
+
+添加完软件源后，更新包索引：
+
+bash复制
+
+```bash
+sudo apt update
+```
+
+#### **6. 安装 Docker**
+
+现在可以尝试再次安装 Docker：
+
+bash复制
+
+```bash
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+```
+
+### **替代方案**
+
+如果上述步骤仍然无法解决问题，可以尝试以下替代方案：
+
+#### **1. 使用阿里云镜像源**
+
+阿里云提供了稳定的 Docker 镜像源。可以使用以下命令配置阿里云的 Docker 源：
+
+bash复制
+
+```bash
+curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+echo "deb [arch=$(dpkg --print-architecture)] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+```
+
+#### **2. 使用 Docker 官方一键安装脚本**
+
+Docker 官方提供了一键安装脚本，适用于多种操作系统：
+
+bash复制
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+需要注意的是，这种方式安装的可能是体验版而非稳定版，建议不用于生产环境。
+
+### **验证安装**
+
+安装完成后，可以通过以下命令验证 Docker 是否安装成功：
+
+bash复制
+
+```bash
+sudo docker run hello-world
+```
+
+如果看到“Hello from Docker!”的输出，说明 Docker 已成功安装。
+
+通过上述步骤和替代方案，你应该能够顺利解决“没有可用的软件包 docker-ce”的问题。
+
+
+
+
 
 ## 建立和运行
 

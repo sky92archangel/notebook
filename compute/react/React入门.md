@@ -11,9 +11,11 @@
 然后终端输入
 
 ```shell
-npx create-reat-app my_react_app
+npx create-react-app my_react_app
 #或者
 npx create-next-app my_react_app
+#或者
+npm init vite@latest
 #打开
 cd  my_react_app
 #启动

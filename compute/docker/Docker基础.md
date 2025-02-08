@@ -200,6 +200,33 @@ sudo docker run hello-world
 
 ### 基本操作
 
+容器操作
+
+```shell
+#查看运行中的容器
+sky92@sky92:~$ docker ps 
+#查看所有容器
+sky92@sky92:~$ docker ps -a
+#开始运行容器 运行已存在容器
+sky92@sky92:~$ docker start 容器ID
+sky92@sky92:~$ docker start 容器名称
+#停止容器
+sky92@sky92:~$ docker stop 容器ID
+sky92@sky92:~$ docker stop 容器名称
+```
+
+镜像操作
+
+```shell
+#查看镜像
+sky92@sky92:~$ docker images
+#删除镜像
+sky92@sky92:~$ docker rmi  镜像ID
+sky92@sky92:~$ docker rmi  镜像名称
+#强制删除
+sky92@sky92:~$ docker rmi  镜像ID --force
+```
+
 假设已经安装完成docker并配置最快的源
 
 拉取docker镜像，建议使用一般镜像，若对环境要求高容量有限时可选定制瘦镜像
@@ -224,11 +251,6 @@ docker run -itd -p 8888:8888 -v ~/myapp:/usr/src/myapp -w /bin/bash --name pytho
 ```shell
 docker exec -it python-env /bin/bash
 ```
-运行已存在容器
-```shell
-docker start  容器ID
-```
-
 在容器内命令行
 pip安装所需的包
 
@@ -455,7 +477,11 @@ services:
 查看容器
 
 ```shell
+#查看运行中的容器
+sky92@sky92:~$ docker ps
 sky92@sky92:~$ docker-compose ps
+#查看所有容器
+sky92@sky92:~$ docker ps -a
 ```
 
 重起项目的服务

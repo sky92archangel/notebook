@@ -179,8 +179,6 @@ sudo docker run hello-world
 
 
 
-
-
 ## 建立和运行
 
 ### 镜像版本区别

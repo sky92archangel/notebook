@@ -104,7 +104,65 @@ for i in range(len(logic_lst)):
 
 
 
+## 脉宽调制 
 
+### PWM呼吸灯
+
+采用方波0V电压周期占空比调整平均输出电压，达到利用比例控制输出电压的手段：
+
+```python
+from machine import Pin,PWM
+import time
+#定义输出口
+led_pin =Pin(12,Pin.OUT) 
+#建立脉宽调制
+led =PWM(led_pin,freq=1000)
+# duty 占空比范围1-1023
+#duty_u16 范围 0-65535
+#duty_ns 为纳秒单位脉冲宽度 范围 0-50000
+limit = 1024
+#
+while 1:
+    for i in range(limit):
+        led.duty(i)
+        time.sleep_ms(1)
+    for i in range(limit-1,0,-1):
+        led.duty(i)
+        time.sleep_ms(1)
+```
+
+
+
+舵机
+
+```python
+from machine import Pin,PWM
+import time
+
+#标准PWM信号周期固定为20ms
+# 0.5ms = 00 度= 0.5//20
+# 1.0ms = 45 度= 1.0//20
+# 1.5ms = 90 度= 1.5//20
+# 2.0ms = 135 度= 2.0//20
+# 2.5ms = 180 度= 2.5//20
+
+
+pwm_pin = Pin(4,Pin.OUT)
+
+servo_pwm =PWM(pwm_pin )
+servo_pwm.freq(50)
+
+servo_pwm.duty(int(1023*0.5/20))
+
+while 1:  
+    servo_pwm.duty(int(1023*1.0/20))
+    time.sleep(1)
+    servo_pwm.duty(int(1023*2.0/20))
+    time.sleep(1)
+
+ 
+
+```
 
 
 

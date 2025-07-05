@@ -37,6 +37,18 @@ npm config delete registry
 
  
 
+### 另
+
+```shell
+npm create vite@latest my-react-app -- --template react
+cd my-react-app
+npm install  # 安装依赖
+code .  # 用VSCode打开
+npm run dev  # 启动开发服务器
+```
+
+
+
 
 
 ## 核心语法

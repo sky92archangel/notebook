@@ -101,7 +101,7 @@ CMD ["/bin/bash", "-c", "while true; do sleep 1000; done"]
 
 - **设计目的**：此镜像不直接运行应用，而是提供一个 “待命” 状态的容器，方便开发者通过docker exec进入容器，手动执行命令（如启动应用、调试代码等）。
 
-### **镜像的典型用途**
+#### **镜像的典型用途**
 
 这个 Dockerfile 构建的镜像**不适合生产环境**，主要用于以下场景：
 
@@ -111,15 +111,21 @@ CMD ["/bin/bash", "-c", "while true; do sleep 1000; done"]
 
 1. **临时操作**：需要在容器内执行额外命令（如文件修改、配置调整）后再启动应用。
 
-### **如何使用此镜像**
+    
 
-1. **构建镜像**：
+### **5. 构建镜像**
+
+**构建镜像**：
 
 ```shell
 docker build -t my-dotnet-dev:8.0 -f Dockerfile .
 ```
 
-1. **运行容器**（结合卷挂载）：
+
+
+### **如何使用此镜像**
+
+1. 运行容器**（结合卷挂载）：
 
 ```shell
 docker run -d \
@@ -166,7 +172,7 @@ docker run -d \
   -e ASPNETCORE_HTTP_PORTS=8080 \
   -e ASPNETCORE_URLS="http://0.0.0.0:8080" \
   container_name:0.1 \
-  XXX.dll
+  dotnet XXX.dll
 ```
 
 这条命令使用 Docker 启动了一个运行 [ASP.NET](https://ASP.NET) Core Web API 的容器，以下是对各部分的详细解释：
@@ -180,7 +186,7 @@ docker run -d \
   -e ASPNETCORE_HTTP_PORTS=8080 \
   -e ASPNETCORE_URLS="http://0.0.0.0:8080" \
   container_name:0.1 \
-  XXX.dll
+  dotnet XXX.dll
 ```
 
 ### **参数详解**
@@ -220,13 +226,13 @@ docker run -d \
 
 指定要运行的 Docker 镜像及其标签。
 
-1. **xxx.dll**
+1. **dotnet xxx.dll**
 
 **覆盖默认命令**：
 
 - - Docker 镜像的默认启动命令通常是 dotnet 主程序.dll。
 
-- - 这里显式指定 xxx.dll，等效于执行 dotnet xxx.dll。
+- - 这里显式指定dotnet xxx.dll，等效于执行 dotnet xxx.dll。
 
 ### **潜在问题**
 

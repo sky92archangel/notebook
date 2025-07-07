@@ -35,6 +35,9 @@ sky92@sky92:~$ sudo groupadd docker
 #将当前用户添加到该docker组
 sky92@sky92:~$ sudo usermod -aG docker $USER
 #重新登录
+su - $USER
+#测试是否安装成功
+docker run hello-world
 ```
 
 ### 卸载

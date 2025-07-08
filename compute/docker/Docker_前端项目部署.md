@@ -387,15 +387,88 @@ docker run -d -v /mnt/react_app/dist/:/usr/share/nginx/html -p 9021:80 --name mw
 
 
 
+## 方案2的改进：容器内通信
+
+### 原方案2流程问题分析
+
+原方案2流程：
+
+客户机IP：10.193.55.11
+
+服务宿主机IP：10.193.71.137
+
+前端docker容器：端口 9021:80	 ，即容器内端口80提供服务，绑定了容器对外端口9021，因此客户机可通过10.193.71.137:9021访问本容器；
+
+后端docker容器：端口 9020:8080 ，即容器内端口8080提供服务，绑定了容器对外端口9020，因此客户机可通过10.193.71.137:9020访问本容器； 
+
+注意：这里的前端工程 访问后端的地址是实实在在将 10.193.71.137 写入配置文件内的，因此当整个服务移动到其他IP上，导致需要重新改动前端工程代码（事实证明这里仅仅改动配置json是无效的）；
+
+为了规避这种情况，直接用docker内部网络，并在前端容器内做nginx反向代理；
+
+这样就要用docker建立网络，并采用两个容器通过这个虚拟网络通信，做到容器内通信；
+
+容器内通信的原因：
+
+1、跳过宿主机网关对于网关有复杂身份验证的系统非常有用；
+
+2、由于客户机访问前端时把工程中URL直接拷贝到客户机浏览器，然后从网页访问的请求都是直接根据URL访问后端容器，该URL依然是宿主机的IP，此时又要经过一次服务器网关；
+
+![image-20250708150051132](Docker_前端项目部署.assets/image-20250708150051132.png)
+
+### 容器内通信方案流程
+
+建立docker网络
+
+```shell
+#创建docker虚拟子网
+docker network create 虚拟子网名
+#容器接入子网
+docker network connect 虚拟子网名 前端容器ID/前端容器名
+docker network connect 虚拟子网名 后端容器ID/后端容器名
+```
+
+此时在后端容器内 webapi 提供的服务端口为 8080 ，那么既然是容器内通讯，前端访问后端的地址端口就是8080 
+
+为了强制从前端向后端发出访问请求，而不直接从客户机向后端容器发送请求，需要进入前端容器配置nginx反向代理
+
+```shell
+#进入前端容器命令行
+docker exec -it 前端容器ID sh
+#备份配置文档
+cp /etc/nginx/conf.d/default.conf  /etc/nginx/conf.d/default.conf.bak
+#编辑配置文档
+vi /etc/nginx/conf.d/default.conf
+#写入如下内容
+
+# API请求反向代理到后端容器
+    location /api/ {
+        proxy_pass http://后端容器名:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+    }
+ 
+
+#退出容器
+exit
+#重启容器
+docker restart 前端容器ID
+```
+
+由于nginx进行了反向代理，IP由proxy_pass代劳，那么在前端代码中对webapi访问就采用相对路径访问后端 ， 比如 /api/Query/GetMaterialWeightInfo
+此时经过nginx代理则拼为 http://后端容器名:8080/api/Query/GetMaterialWeightInfo
+必须注意：proxy_pass http://后端容器名:8080;  而不是 proxy_pass http://后端容器名:8080/;   斜杠/会导致拼好的路径api段消失；
 
 
 
+ 那么此时就能做到 客户机访问前端容器，容器通过nginx转发 访问后端API获得数据返回前端容器 然后返回网页；
 
+下面为示意图
 
-
-
-
-
+![image-20250708150059346](Docker_前端项目部署.assets/image-20250708150059346.png)
 
 
 

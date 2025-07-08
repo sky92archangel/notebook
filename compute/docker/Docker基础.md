@@ -305,8 +305,27 @@ docker run -itd -p 8888:8888 -v ~/myapp:/usr/src/myapp -w /bin/bash --name pytho
 #--network-alias pythonNet 指定容器在网络内的别名
 ```
 
-
 注意：如果现有容器没有添加至网络，但又不想失去容器内的部分配置，可以docker commit把旧容器打包为镜像，重新开辟为新容器；
+
+把现有docker容器添加或移除网络
+
+```shell
+#添加
+docker network connect test-net webapi
+docker network connect test-net frontend
+#移除
+docker network disconnect test-net webapi
+docker network disconnect test-net frontend
+
+```
+
+检查容器添加到网络是否成功
+
+```shell
+docker network inspect my_network
+```
+
+
 
 ### 三种方式
 

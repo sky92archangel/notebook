@@ -15,7 +15,8 @@
 发布linux支持的aspnet项目
 
 ```shell
-dotnet publish -c Release -r linux-x64 --self-contained false -o ./publish
+dotnet publish -c Release -r linux-x64 --self-contained false -o ./publish_light
+dotnet publish -c Release -r linux-x64 --self-contained true -o ./publish_heavy
 ```
 
 - `-c Release`：使用 Release 配置。
@@ -252,7 +253,7 @@ ASPNETCORE_URLS 中的 HTTP:// 应改为 http://，避免可能的解析问题�
 
 优化后的命令：
 
-```
+```shell
 docker run -d \
   -v /mnt/local_server_dir/:/app \
   -p 9020:8080 \

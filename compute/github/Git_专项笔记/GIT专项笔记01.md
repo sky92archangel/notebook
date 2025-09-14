@@ -655,6 +655,55 @@ git push --tags --force
 git cat-file -s 2018138e1385c1e8c1e384c1e8331e87
 ```
 
+若已经做了多测commit，但是远程不接受大文件
+
+```shell
+
+# 搜索所有提交中包含的 .tar.gz 文件
+git log --pretty=format: --name-only | sort -u | grep "\.tar\.gz$"
+#  从所有历史提交中删除 tar.gz 文件
+# 推荐使用 git filter-branch（无需额外安装工具，兼容性好）：
+git filter-branch --force --index-filter  "git rm --cached --ignore-unmatch file_to_delete.tar.gz"   --prune-empty --tag-name-filter cat -- --all
+
+# 清理引用日志
+git reflog expire --expire=now --all
+
+# 彻底清理未引用的对象
+git gc --prune=now --aggressive
+
+# 推送到 gitee（替换为你的远程名，如 origin）
+git push gitee --force
+
+# 同样推送到 gitlab
+git push gitlab --force
+
+rm 要删除的文件.tar.gz  # 物理删除本地文件
+```
+
+
+
+若要保留大文件
+
+```shell
+# 安装 Git LFS（如未安装）
+git lfs install
+
+# 跟踪所有 tar.gz 文件
+git lfs track "*.tar.gz"
+
+# 提交跟踪规则
+git add .gitattributes
+git commit -m "Add LFS tracking for tar.gz files"
+
+# 重新添加并提交大文件（此时会被 LFS 管理）
+git add 要保留的文件.tar.gz
+git commit -m "Re-add tar.gz file with LFS"
+
+# 推送（LFS 会单独传输大文件）
+git push gitee
+git push gitlab
+```
+
 
 
 ## 第十一课 引入外部项目

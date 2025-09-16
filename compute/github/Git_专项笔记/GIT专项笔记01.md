@@ -706,6 +706,37 @@ git push gitlab
 
 
 
+## 采用第三方工具BFG
+
+```bash
+## 当我知道需要删除的文件的hash，直接查询这个文件
+git cat-file -t a58872a5e45e0714d7bdb1626b1bd8ae4c53bbc2
+#如果出现blob则说明没有删除，需要后续操作
+#若出现fatal，则说明文件已经从分支删除了
+
+# 进入仓库根目录 
+# 创建文件bad-blobs.txt，内部写入需删除文件的哈希
+#下载bfg工具 安装好java  然后运行如下内容
+java -jar /d/TEMP/bfg-1.15.0.jar --strip-blobs-with-ids bad-blobs.txt .
+#再次检查
+git cat-file -t a58872a5e45e0714d7bdb1626b1bd8ae4c53bbc2
+# 清理引用日志
+git reflog expire --expire=now --all
+
+# 彻底清理未引用的对象
+git gc --prune=now --aggressive
+
+# 推送到 gitee（替换为你的远程名，如 origin）
+git push gitee --force
+
+# 同样推送到 gitlab
+git push gitlab --force
+```
+
+
+
+ 
+
 ## 第十一课 引入外部项目
 
 ### 1.git子项目

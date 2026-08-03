@@ -34,13 +34,13 @@ $$
 
 ### 标准三步流程
 
-```
+```latex
 
 原始微分方程（含u(x)）
         ↓ STEP 1 傅里叶正变换
-简化方程（关于 $\\hat{u}(\\omega)$）
-        ↓ STEP 2 求解方程，得到 $\\hat{u}(\\omega)$
-象函数 $\\hat{u}(\\omega)$
+简化方程（关于 $\hat{u}(\omega)$）
+        ↓ STEP 2 求解方程，得到 $\hat{u}(\omega)$
+象函数 $\hat{u}(\omega)$
         ↓ STEP 3 傅里叶逆变换
 原未知函数 u(x)
 ```
